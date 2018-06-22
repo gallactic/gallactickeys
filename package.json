@@ -1,0 +1,20 @@
+{
+  "name": "tenderkeys.js",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "author": "Josef Wijaya <josefwijaya@outlook.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "4.1.2",
+    "webpack": "4.12.0"
+  },
+  "dependencies": {
+    "bip39": "2.5.0",
+    "ripemd160": "2.0.2",
+    "tweetnacl": "1.0.0"
+  }
+}
