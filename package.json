@@ -16,5 +16,9 @@
     "bip39": "2.5.0",
     "ripemd160": "2.0.2",
     "tweetnacl": "1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/finterra007/tenderkeys.js"
   }
 }
