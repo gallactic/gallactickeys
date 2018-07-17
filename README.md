@@ -83,10 +83,6 @@ keystore = {
 */
 ```
 
-## Hashing rounds
-
-
-
 ## Tests
 Unit tests are in the ```test``` directory and can be run with mocha:
 ```
