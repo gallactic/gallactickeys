@@ -5,7 +5,7 @@ module.exports = {
   entry: './index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'tenderkeys.min.js',
-    library: 'TenderKeys'
+    filename: 'gallactickeys.min.js',
+    library: 'GallacticKeys'
   }
 };

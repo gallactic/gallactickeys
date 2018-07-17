@@ -1,31 +1,31 @@
-# tenderkeys.js
+# GallacticKeys
 A module for creating and importing Galactic keys. This provides a simple way to generate galactic key.
-Tenderkeys uses the key derivation functions (PBKDF2-SHA256), symmetric ciphers (AES-128-CTR), and message authentication code. You can export the generated key to file, copy it to you data directory's keystore and start using it.
+GallacticKeys uses the key derivation functions (PBKDF2-SHA256), symmetric ciphers (AES-128-CTR), and message authentication code. You can export the generated key to file, copy it to you data directory's keystore and start using it.
 
 ## Installation
-```npm install tenderkeys.js```
+```npm install gallactickeys```
 
 ## Usage:
-To use tenderkeys in Node.js, just ```require``` it:
+To use gallactickeys in Node.js, just ```require``` it:
 
 ```js
-var tenderkeys = require('tenderkeys.js');
+var gallactickeys = require('gallactickeys');
 ```
 
-A minified, browserified file ```dist/bundle.js``` is included for use in the browser. Including this file simply attaches ```TenderKeys``` object to ```window```:
+A minified, browserified file ```dist/gallactickeys.min.js``` is included for use in the browser. Including this file simply attaches ```GallacticKeys``` object to ```window```:
 
-```<sciprt src="dist/bundle.js" type="text/javascript"></script>```
+```<sciprt src="dist/gallactickeys.min.js" type="text/javascript"></script>```
 
 ## Key Creation
 Generate a random private key, as well as the salt used by the key derivation function and the initialization vector used to AES-128-CTR encrypt the key. ```create``` is synchronous.
 
 ```js
-var tenderkeys = require('./index');
+var gallactickeys = require('./index');
 var options = {
   seed: 'shadow outside hint dish fortune boss oak album gym all mask there' // optional
 };
 
-var dk = tenderkeys.create(option);
+var dk = gallactickeys.create(option);
 /**
 dk = {
   seed: 'shadow outside hint dish fortune boss oak album gym all mask there',
@@ -60,7 +60,7 @@ let opt = {
   }
 }
 
-let keystore = tenderkeys.export(option.password, option.privateKey, option.salt, option.iv, option.option);
+let keystore = gallactickeys.export(option.password, option.privateKey, option.salt, option.iv, option.option);
 
 /**
 keystore = {

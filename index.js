@@ -1,7 +1,7 @@
-var TenderKeys = require('./lib/tenderkeys.js');
+var GallacticKeys = require('./lib/gallactickeys.js');
 
-if (typeof windows !== 'undefined' && typeof window.TenderKeys === 'undefined') {
-  window.TenderKeys = TenderKeys;
+if (typeof windows !== 'undefined' && typeof window.GallacticKeys === 'undefined') {
+  window.GallacticKeys = GallacticKeys;
 }
 
-module.exports = TenderKeys;
+module.exports = GallacticKeys;

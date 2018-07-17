@@ -1,9 +1,9 @@
 'use strict'
 
-var tenderKeys = typeof window !== 'undefined' ? window.TenderKeys : require('../index');
+var gallactickeys = typeof window !== 'undefined' ? window.GallacticKeys : require('../index');
 var expect = typeof window !== 'undefined' ? window.expect : require('chai').expect;
 
-describe('Tenderkeys', function () {
+describe('GallacticKeys', function () {
   it('create - should return expected response', function () {
     var testData = [{
       input: {
@@ -32,7 +32,7 @@ describe('Tenderkeys', function () {
     }]
 
     testData.forEach(e => {
-      let result = tenderKeys.create(e.input);
+      let result = gallactickeys.create(e.input);
       expect(result.seed).to.equal(e.res.seed);
       expect(result.seedHashed).to.equal(e.res.seedHashed)
       expect(result.keyPair.publicKey).to.equal(e.res.keyPair.publicKey);
@@ -77,7 +77,7 @@ describe('Tenderkeys', function () {
     }];
 
     testData.forEach(e => {
-      let result = tenderKeys.export(e.input.password, e.input.privateKey, e.input.salt, e.input.iv, e.input.option);
+      let result = gallactickeys.export(e.input.password, e.input.privateKey, e.input.salt, e.input.iv, e.input.option);
 
       expect(result.crypto.cipher).to.equal(e.res.crypto.cipher);
       expect(result.crypto.cipherparams.iv).to.equal(e.res.crypto.cipherparams.iv);
@@ -121,7 +121,7 @@ describe('Tenderkeys', function () {
     }];
 
     testData.forEach(e => {
-      let result = tenderKeys.recover(e.input.password, e.input.keyObject);
+      let result = gallactickeys.recover(e.input.password, e.input.keyObject);
       expect(result).to.equal(e.res.privateKey);
     })
   })
