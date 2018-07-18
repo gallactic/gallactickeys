@@ -50,7 +50,7 @@ describe('GallacticKeys - utils - util', function () {
   });
 
   it('"strToBuffer" should return buffer given random string', function () {
-    expect(util.strToBuffer('somethinghere') instanceof Buffer).to.equal(true);
+    expect(typeof util.strToBuffer('somethinghere')).to.equal('object');
   });
 
   it('"hexToUtf16le" should return String given 008AEEDA4D805471DF9B2A5B0F38A0C3BCBA786B', function () {
@@ -83,8 +83,8 @@ describe('GallacticKeys - utils - crypto', function () {
   })
   it('"makeKeyPair" should return a key pair object given a seed')
   it('"deriveKey" should return secret key given password', function () {
-    expect(crypto.deriveKey('password', 'somesalt', { kdf: 'pbkdf2' }) instanceof Buffer)
-      .to.equal(true);
+    expect(typeof crypto.deriveKey('password', 'somesalt', { kdf: 'pbkdf2' }))
+      .to.equal('object');
   })
   it('"marshal" should return a keystore object given derivedKey, privatekey, salt and iv', function () {
     let data = {
@@ -103,8 +103,8 @@ describe('GallacticKeys - utils - crypto', function () {
       key: crypto.generateIv(16),
       iv: crypto.generateSalt(16)
     }
-    expect(crypto.encrypt(data.text, data.key, data.iv) instanceof Buffer)
-      .to.equal(true);
+    expect(typeof crypto.encrypt(data.text, data.key, data.iv))
+      .to.equal('object');
   })
   it('"decrypt" should return private key buffer given ciphertext, key, iv and algorithm', function () {
     let data = {
@@ -112,8 +112,8 @@ describe('GallacticKeys - utils - crypto', function () {
       key: crypto.generateIv(16), // the use of generateIv here is just to create random bytes
       iv: crypto.generateSalt(16)
     }
-    expect(crypto.decrypt(data.ciphertext, data.key, data.iv) instanceof Buffer)
-      .to.equal(true);
+    expect(typeof crypto.decrypt(data.ciphertext, data.key, data.iv))
+      .to.equal('object');
   })
   it('"getAddressByPubKey" should return ')
   it('"getAddressByPrivKey" should return ')

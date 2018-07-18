@@ -14,11 +14,13 @@
   <script>mocha.setup('bdd')</script>
   <script src="../dist/gallactickeys.min.js"></script>
   <script src="test.js"></script>
+  <script src="util.test.js"></script>
   <!-- <script src="test.object.js"></script> -->
   <!-- <script src="test.xhr.js"></script> -->
   <script>
     mocha.checkLeaks();
     mocha.globals(['jQuery']);
+    mocha.timeout(5000);
     mocha.run();
   </script>
 </body>
