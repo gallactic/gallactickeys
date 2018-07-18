@@ -29,14 +29,19 @@ describe('GallacticKeys', function () {
           privateKey: '8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08'
         }
       }
+    }, {
+      input: {},
+      res: {
+        keyPair: {}
+      }
     }]
 
     testData.forEach(e => {
       let result = gallactickeys.create(e.input);
-      expect(result.seed).to.equal(e.res.seed);
-      expect(result.seedHashed).to.equal(e.res.seedHashed)
-      expect(result.keyPair.publicKey).to.equal(e.res.keyPair.publicKey);
-      expect(result.keyPair.privateKey).to.equal(e.res.keyPair.privateKey);
+      expect(result.seed).to.equal(e.res.seed || result.seed);
+      expect(result.seedHashed).to.equal(e.res.seedHashed || result.seedHashed)
+      expect(result.keyPair.publicKey).to.equal(e.res.keyPair.publicKey || result.keyPair.publicKey);
+      expect(result.keyPair.privateKey).to.equal(e.res.keyPair.privateKey || result.keyPair.privateKey);
     });
   });
 
@@ -124,5 +129,5 @@ describe('GallacticKeys', function () {
       let result = gallactickeys.recover(e.input.password, e.input.keyObject);
       expect(result).to.equal(e.res.privateKey);
     })
-  })
+  });
 });
