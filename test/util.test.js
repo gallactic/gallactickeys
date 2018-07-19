@@ -2,6 +2,7 @@
 
 var gallactickeys = typeof window !== 'undefined' ? window.GallacticKeys : require('../index');
 var expect = typeof window !== 'undefined' ? window.expect : require('chai').expect;
+var globalOrWindow = (typeof window !== 'undefined' ? window : global);
 
 describe('GallacticKeys - utils', function () {
   it('should have util object', function () {
@@ -165,10 +166,10 @@ describe('GallacticKeys - utils - crypto', function () {
         option: {}
       },
       validate: function (res) {
-        expect(res).to.be.a('error');
+        expect(res instanceof Error).to.equal(true);
       }
     }];
-    global.runTest(test, done);
+    globalOrWindow.runTest(test, done);
   });
 
   it('"isCipherAvailable" should return ')

@@ -2,7 +2,7 @@
 
 var gallactickeys = typeof window !== 'undefined' ? window.GallacticKeys : require('../index');
 var expect = typeof window !== 'undefined' ? window.expect : require('chai').expect;
-
+var globalOrWindow = (typeof window !== 'undefined' ? window : global);
 /**
  * Helper function too do test in a waterfall sequence manner for
  * this handle asynchronous tests that returns promise or synchronous test
@@ -13,7 +13,7 @@ var expect = typeof window !== 'undefined' ? window.expect : require('chai').exp
  * @param {Function} done [a callback to report mocha that the running test is completed]
  * @param {Integer} count [a counter value of running test]
  */
-global.runTest = function (test, done, count = 0) {
+globalOrWindow.runTest = function (test, done, count = 0) {
   if (test.data.length === count) {
     return done();
   }
@@ -29,7 +29,7 @@ global.runTest = function (test, done, count = 0) {
         if (test.data[count].validate) {
           test.data[count].validate(output);
         }
-        global.runTest(test, done, ++count);
+        globalOrWindow.runTest(test, done, ++count);
       })
       .catch(done);
   } else {
@@ -37,7 +37,7 @@ global.runTest = function (test, done, count = 0) {
     if (test.data[count].validate) {
       test.data[count].validate(res);
     }
-    global.runTest(test, done, ++count);
+    globalOrWindow.runTest(test, done, ++count);
   }
 };
 
