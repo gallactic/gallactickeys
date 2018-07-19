@@ -1,3 +1,5 @@
+  [![NPM Version][npm-image]][npm-url]
+
 # GallacticKeys
 A module for creating and importing Galactic keys. This provides a simple way to generate galactic key.
 GallacticKeys uses the key derivation functions (PBKDF2-SHA256), symmetric ciphers (AES-128-CTR), and message authentication code. You can export the generated key to file, copy it to you data directory's keystore and start using it.
@@ -134,3 +136,9 @@ The command will help run webpack generate new minified file under dist folder. 
 ```
 mocha
 ```
+
+## License
+[MIT](LICENSE)
+
+[npm-image]: https://img.shields.io/npm/v/gallactickeys.svg
+[npm-url]: https://npmjs.org/package/gallactickeys
