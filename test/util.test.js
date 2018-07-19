@@ -134,7 +134,7 @@ describe('GallacticKeys - utils - crypto', function () {
     const test = {
       function: function (data) {
         try {
-          let res = crypto.encodeAddress(data.address, data.option);
+          let res = crypto.encodeAddress(data.address, data.type);
           return res;
         } catch (e) {
           return e;
@@ -147,7 +147,7 @@ describe('GallacticKeys - utils - crypto', function () {
     test.data = [{
       input: {
         address: '6AE5EF855FE4F3771D1B6D6B73E21065ED7670EC',
-        option: { asAc: true }
+        type: 1
       },
       validate: function(res) {
         expect(res).to.equal('acHx3dYGX9pB7xPFZA58ZMcN4kYEooJMVds');
@@ -155,7 +155,7 @@ describe('GallacticKeys - utils - crypto', function () {
     }, {
       input: {
         address: '6AE5EF855FE4F3771D1B6D6B73E21065ED7670EC',
-        option: { asVa: true }
+        type: 2
       },
       validate: function (res) {
         expect(res).to.equal('vaLg1Q47gZ1njdpWsbVjnxTiE8Kjbwn1Bvu');
