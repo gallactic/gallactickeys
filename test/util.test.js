@@ -101,9 +101,10 @@ describe('GallacticKeys - utils - crypto', function () {
       privateKey: '8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08',
       iv: crypto.generateSalt(16),
       salt: crypto.generateIv(16),
+      type: 1,
       opt: { kdf: 'pbkdf2' }
     }
-    expect(crypto.marshal(data.derivedKey, data.privateKey, data.salt, data.iv, data.opt))
+    expect(crypto.marshal(data.derivedKey, data.privateKey, data.salt, data.iv, data.type, data.opt))
       .to.be.an('object');
   });
 

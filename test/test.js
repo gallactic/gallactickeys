@@ -84,7 +84,7 @@ describe('GallacticKeys', function () {
     });
   });
 
-  it('export - should return export key info to keystore "secret-storage" format', function () {
+  it('exportAc - should return export key info to keystore "secret-storage" format', function () {
     var testData = [{
       input: {
         password: 'gallaaaaaactic',
@@ -102,7 +102,7 @@ describe('GallacticKeys', function () {
         }
       },
       res: {
-        address: '008aeeda4d805471df9b2a5b0f38a0c3bcba786b',
+        address: 'acQUFGxsXVPSd6vbAceSkURnWhYhApE9VRe',
         crypto: {
           cipher: 'aes-128-ctr',
           cipherparams: {
@@ -121,8 +121,64 @@ describe('GallacticKeys', function () {
     }];
 
     testData.forEach(e => {
-      let result = gallactickeys.export(e.input.password, e.input.privateKey, e.input.salt, e.input.iv, e.input.option);
+      let result = gallactickeys.exportAc(
+        e.input.password, e.input.privateKey, e.input.salt, e.input.iv, e.input.option
+      );
 
+      expect(result.address).to.equal(e.res.address);
+      expect(result.crypto.cipher).to.equal(e.res.crypto.cipher);
+      expect(result.crypto.cipherparams.iv).to.equal(e.res.crypto.cipherparams.iv);
+      expect(result.crypto.mac).to.equal(e.res.crypto.mac);
+      expect(result.crypto.kdf).to.equal(e.res.crypto.kdf);
+      expect(result.crypto.kdfparams.c).to.equal(e.res.crypto.kdfparams.c);
+      expect(result.crypto.kdfparams.dklen).to.equal(e.res.crypto.kdfparams.dklen);
+      expect(result.crypto.kdfparams.prf).to.equal(e.res.crypto.kdfparams.prf);
+      expect(result.crypto.kdfparams.salt).to.equal(e.res.crypto.kdfparams.salt);
+    })
+  })
+
+  it('exportVa - should return export key info to keystore "secret-storage" format', function () {
+    var testData = [{
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'pbkdf2',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            c: 262144,
+            dklen: 32,
+            prf: 'hmac-sha256'
+          }
+        }
+      },
+      res: {
+        address: 'vaTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Q8',
+        crypto: {
+          cipher: 'aes-128-ctr',
+          cipherparams: {
+            iv: 'd32116e6157fde33fa0c7e0e4001e145'
+          },
+          mac: 'ed9d66f2c1ade5fdaa4516cc5839c6533e3395afcad028941e87dd7a3bbd6851',
+          kdf: 'pbkdf2',
+          kdfparams: {
+            c: 262144,
+            dklen: 32,
+            prf: 'hmac-sha256',
+            salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd'
+          }
+        }
+      }
+    }];
+
+    testData.forEach(e => {
+      let result = gallactickeys.exportVa(
+        e.input.password, e.input.privateKey, e.input.salt, e.input.iv, e.input.option
+      );
+
+      expect(result.address).to.equal(e.res.address);
       expect(result.crypto.cipher).to.equal(e.res.crypto.cipher);
       expect(result.crypto.cipherparams.iv).to.equal(e.res.crypto.cipherparams.iv);
       expect(result.crypto.mac).to.equal(e.res.crypto.mac);
