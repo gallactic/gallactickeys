@@ -42,6 +42,7 @@ globalOrWindow.runTest = function (test, done, count = 0) {
 };
 
 describe('GallacticKeys', function () {
+  this.timeout(5000);
   it('create - should return expected response', function () {
     var testData = [{
       input: {
