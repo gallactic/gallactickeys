@@ -20,6 +20,7 @@
     "webpack-cli": "3.0.8"
   },
   "dependencies": {
+    "bs58": "4.0.1",
     "bip39": "2.5.0",
     "ripemd160": "2.0.2",
     "tweetnacl": "1.0.0"
