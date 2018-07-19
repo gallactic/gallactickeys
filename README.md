@@ -103,11 +103,11 @@ let opt = {
   }
 }
 
-let keystore = gallactickeys.exportAc(option.password, option.privateKey, option.salt, option.iv, option.option);
+let keystore = gallactickeys.exportVa(option.password, option.privateKey, option.salt, option.iv, option.option);
 
 /**
 keystore = {
-  address: 'acQUFGxsXVPSd6vbAceSkURnWhYhApE9VRe',
+  address: 'vaTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Q8',
   crypto: {
     cipher: 'aes-128-ctr',
     cipherparams: {
