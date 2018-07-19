@@ -3,6 +3,44 @@
 var gallactickeys = typeof window !== 'undefined' ? window.GallacticKeys : require('../index');
 var expect = typeof window !== 'undefined' ? window.expect : require('chai').expect;
 
+/**
+ * Helper function too do test in a waterfall sequence manner for
+ * this handle asynchronous tests that returns promise or synchronous test
+ * @param {Array} test [An array of object that contains "function", "data"]
+ * @param {Function} test.function [A function that executes the test. it take test.input]
+ * @param {Object} test.data.input [An object that contains test input value]
+ * @param {Function} test.data.validate [A validator function to validate the test]
+ * @param {Function} done [a callback to report mocha that the running test is completed]
+ * @param {Integer} count [a counter value of running test]
+ */
+global.runTest = function (test, done, count = 0) {
+  if (test.data.length === count) {
+    return done();
+  }
+
+  let beforeTest = test.before ? test.before() : null;
+  let res = beforeTest && typeof beforeTest.then === 'function' ?
+    beforeTest.then(() => test.function(test.data[count].input)) :
+    test.function(test.data[count].input);
+  if (res.then && typeof res.then === 'function') {
+    res
+      .then(output => {
+        test.validate(output);
+        if (test.data[count].validate) {
+          test.data[count].validate(output);
+        }
+        global.runTest(test, done, ++count);
+      })
+      .catch(done);
+  } else {
+    test.validate(res);
+    if (test.data[count].validate) {
+      test.data[count].validate(res);
+    }
+    global.runTest(test, done, ++count);
+  }
+};
+
 describe('GallacticKeys', function () {
   it('create - should return expected response', function () {
     var testData = [{
