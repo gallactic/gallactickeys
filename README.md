@@ -40,10 +40,12 @@ dk = {
 */
 ```
 ## Key Export
-You will need to specify a password and (optionally) a key derivation function. if unspecified, PBKDF2-SHA256 will be used to derive the AES secret key. NOTE: right now it only support PBKDF2-SHA256.
-
+You will need to specify a password and (optionally) a key derivation function. if unspecified, PBKDF2-SHA256 will be used to derive the AES secret key. NOTE: right now it only support PBKDF2-SHA256. There are 2 methods of key export, which are `exportAc` and
+`exportVa`.
 
 ```js
+// exportAc - function
+
 let opt = {
   password: 'gallaaaaaactic',
   privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
@@ -60,11 +62,50 @@ let opt = {
   }
 }
 
-let keystore = gallactickeys.export(option.password, option.privateKey, option.salt, option.iv, option.option);
+let keystore = gallactickeys.exportAc(option.password, option.privateKey, option.salt, option.iv, option.option);
 
 /**
 keystore = {
-  address: '008aeeda4d805471df9b2a5b0f38a0c3bcba786b',
+  address: 'acQUFGxsXVPSd6vbAceSkURnWhYhApE9VRe',
+  crypto: {
+    cipher: 'aes-128-ctr',
+    cipherparams: {
+      iv: 'd32116e6157fde33fa0c7e0e4001e145'
+    },
+    mac: 'ed9d66f2c1ade5fdaa4516cc5839c6533e3395afcad028941e87dd7a3bbd6851',
+    kdf: 'pbkdf2',
+    kdfparams: {
+      c: 262144,
+      dklen: 32,
+      prf: 'hmac-sha256',
+      salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd'
+    }
+  }
+}
+*/
+
+// exportVa - function
+let opt = {
+  password: 'gallaaaaaactic',
+  privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+  salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+  iv: 'd32116e6157fde33fa0c7e0e4001e145',
+  option: {
+    kdf: 'pbkdf2',
+    cipher: 'aes-128-ctr',
+    kdfparams: {
+      c: 262144,
+      dklen: 32,
+      prf: 'hmac-sha256'
+    }
+  }
+}
+
+let keystore = gallactickeys.exportAc(option.password, option.privateKey, option.salt, option.iv, option.option);
+
+/**
+keystore = {
+  address: 'acQUFGxsXVPSd6vbAceSkURnWhYhApE9VRe',
   crypto: {
     cipher: 'aes-128-ctr',
     cipherparams: {
