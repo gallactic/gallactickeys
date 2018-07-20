@@ -118,6 +118,33 @@ describe('GallacticKeys', function () {
           }
         }
       }
+    }, {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        option: {
+          kdf: 'pbkdf2',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            c: 262144,
+            dklen: 32,
+            prf: 'hmac-sha256'
+          }
+        }
+      },
+      res: {
+        address: 'acQUFGxsXVPSd6vbAceSkURnWhYhApE9VRe',
+        crypto: {
+          cipher: 'aes-128-ctr',
+          cipherparams: {},
+          kdf: 'pbkdf2',
+          kdfparams: {
+            c: 262144,
+            dklen: 32,
+            prf: 'hmac-sha256'
+          }
+        }
+      }
     }];
 
     testData.forEach(e => {
@@ -127,13 +154,16 @@ describe('GallacticKeys', function () {
 
       expect(result.address).to.equal(e.res.address);
       expect(result.crypto.cipher).to.equal(e.res.crypto.cipher);
-      expect(result.crypto.cipherparams.iv).to.equal(e.res.crypto.cipherparams.iv);
-      expect(result.crypto.mac).to.equal(e.res.crypto.mac);
+      if (e.res.crypto.cipherparams.iv)
+        expect(result.crypto.cipherparams.iv).to.equal(e.res.crypto.cipherparams.iv);
+      if (e.res.crypto.mac)
+        expect(result.crypto.mac).to.equal(e.res.crypto.mac);
       expect(result.crypto.kdf).to.equal(e.res.crypto.kdf);
       expect(result.crypto.kdfparams.c).to.equal(e.res.crypto.kdfparams.c);
       expect(result.crypto.kdfparams.dklen).to.equal(e.res.crypto.kdfparams.dklen);
       expect(result.crypto.kdfparams.prf).to.equal(e.res.crypto.kdfparams.prf);
-      expect(result.crypto.kdfparams.salt).to.equal(e.res.crypto.kdfparams.salt);
+      if (e.res.crypto.kdfparams.salt)
+        expect(result.crypto.kdfparams.salt).to.equal(e.res.crypto.kdfparams.salt);
     })
   })
 
