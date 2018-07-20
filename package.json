@@ -1,6 +1,6 @@
 {
   "name": "gallactickeys",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A module for creating and importing Galactic keys",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/finterra007/tenderkeys.js"
+    "url": "https://github.com/gallactic/gallactickeys"
   }
 }
