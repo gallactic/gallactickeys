@@ -64,7 +64,7 @@ let opt = {
   }
 }
 
-let keystore = gallactickeys.exportAc(option.password, option.privateKey, option.salt, option.iv, option.option);
+let keystore = gallactickeys.exportAc(opt.password, opt.privateKey, opt.salt, opt.iv, opt.option);
 
 /**
 keystore = {
@@ -103,7 +103,7 @@ let opt = {
   }
 }
 
-let keystore = gallactickeys.exportVa(option.password, option.privateKey, option.salt, option.iv, option.option);
+let keystore = gallactickeys.exportVa(opt.password, opt.privateKey, opt.salt, opt.iv, opt.option);
 
 /**
 keystore = {
