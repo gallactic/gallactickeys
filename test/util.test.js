@@ -76,6 +76,9 @@ describe('GallacticKeys - utils - crypto', function () {
   it('should have "decrypt" function', () => expect(crypto.decrypt).to.be.a('function'));
   it('should have "getAddressByPubKey" function', () => expect(crypto.getAddressByPubKey).to.be.a('function'));
   it('should have "getAddressByPrivKey" function', () => expect(crypto.getAddressByPrivKey).to.be.a('function'));
+  it('should have "getAcAddrByPrivKey" function', () => expect(crypto.getAcAddrByPrivKey).to.be.a('function'));
+  it('should have "getVaAddrByPrivKey" function', () => expect(crypto.getVaAddrByPrivKey).to.be.a('function'));
+  it('should have "getPubKeyByPrivKey" function', () => expect(crypto.getPubKeyByPrivKey).to.be.a('function'));
   it('should have "encodeAddress" function', () => expect(crypto.encodeAddress).to.be.a('function'));
   it('should have "isCipherAvailable" function', () => expect(crypto.isCipherAvailable).to.be.a('function'));
   it('should have "makeKeyPairFromSeed" function', () => expect(crypto.makeKeyPairFromSeed).to.be.a('function'));
@@ -130,6 +133,26 @@ describe('GallacticKeys - utils - crypto', function () {
 
   it('"getAddressByPubKey" should return ')
   it('"getAddressByPrivKey" should return ')
+  it('"getAcAddrByPrivKey" should return account address given private key', function () {
+    let privKey = '8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08';
+    let result = crypto.getAcAddrByPrivKey(privKey);
+    expect(result).to.be.a('string');
+    expect(result.length).to.be.within(34, 35);
+  });
+
+  it('"getAcAddrByPrivKey" should return account address given private key', function () {
+    let privKey = '8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08';
+    let result = crypto.getVaAddrByPrivKey(privKey);
+    expect(result).to.be.a('string');
+    expect(result.length).to.be.within(34, 35);
+  });
+
+  it('"getPubKeyByPrivKey" should return public key given private key', function () {
+    let privKey = '8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08';
+    let result = crypto.getPubKeyByPrivKey(privKey);
+    expect(result).to.be.a('string');
+    expect(result.length).to.equal(64);
+  });
 
   it('"encodeAddress", should return the encoded address based on given address and option', function (done) {
     const test = {
