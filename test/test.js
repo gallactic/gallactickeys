@@ -85,7 +85,8 @@ describe('GallacticKeys', function () {
   });
 
   it('exportAc - should return export key info to keystore "secret-storage" format', function () {
-    var testData = [{
+    var testData =
+    [{
       input: {
         password: 'gallaaaaaactic',
         privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
@@ -108,7 +109,7 @@ describe('GallacticKeys', function () {
           cipherparams: {
             iv: 'd32116e6157fde33fa0c7e0e4001e145'
           },
-          mac: 'ed9d66f2c1ade5fdaa4516cc5839c6533e3395afcad028941e87dd7a3bbd6851',
+          mac: '82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe',
           kdf: 'pbkdf2',
           kdfparams: {
             c: 262144,
@@ -118,7 +119,8 @@ describe('GallacticKeys', function () {
           }
         }
       }
-    }, {
+    },
+    { // testing without salt and iv provided
       input: {
         password: 'gallaaaaaactic',
         privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
@@ -168,7 +170,8 @@ describe('GallacticKeys', function () {
   })
 
   it('exportVa - should return export key info to keystore "secret-storage" format', function () {
-    var testData = [{
+    var testData =
+    [{
       input: {
         password: 'gallaaaaaactic',
         privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
@@ -191,7 +194,7 @@ describe('GallacticKeys', function () {
           cipherparams: {
             iv: 'd32116e6157fde33fa0c7e0e4001e145'
           },
-          mac: 'ed9d66f2c1ade5fdaa4516cc5839c6533e3395afcad028941e87dd7a3bbd6851',
+          mac: '82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe',
           kdf: 'pbkdf2',
           kdfparams: {
             c: 262144,
@@ -221,28 +224,50 @@ describe('GallacticKeys', function () {
   })
 
   it('recover - should return the "plain-text" format of the private key', function () {
-    var testData = [{
+    var testData =
+    [{
       input: {
         password: 'gallaaaaaactic',
         keyObject: {
-          address: '6CE3E09C9D1234AD74BFDF57E20DB4F07A56E1',
+          address: 'vaTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Q8',
           crypto: {
             cipher: 'aes-128-ctr',
-            cipherparams: {
-              iv: '6bab7fb495ad8c20ee7e18e2717b36bc'
-            },
-            ciphertext: '99cc42176f687fbe24950fb9a5734243be11bf7ee5cc955c94448b19f286707fc9f0607d333594571c343f9888ab0325472ac8b2f70608dd2484d6309c8a90cc',
+            ciphertext: '42bd22c6d3310e5d62ada2c44ef9b7634a85984ef4404be3af881eb9e6ad5847745b14d4d59a61324f3177e5ff9c33c2cd538a8cc084950eed1c2b341867892d',
+            cipherparams: { iv: 'd32116e6157fde33fa0c7e0e4001e145' },
+            mac: '82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe',
+            kdf: 'pbkdf2',
+            kdfparams:
+            {
+              c: 262144,
+              dklen: 32,
+              prf: 'hmac-sha256',
+              salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd'
+            }
+          }
+        }
+      },
+      res: {
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE'
+      }
+    },
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        keyObject: {
+          address: 'acQUFGxsXVPSd6vbAceSkURnWhYhApE9VRe',
+          crypto: {
+            cipher: 'aes-128-ctr',
+            ciphertext: '42bd22c6d3310e5d62ada2c44ef9b7634a85984ef4404be3af881eb9e6ad5847745b14d4d59a61324f3177e5ff9c33c2cd538a8cc084950eed1c2b341867892d',
+            cipherparams: { iv: 'd32116e6157fde33fa0c7e0e4001e145' },
+            mac: '82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe',
             kdf: 'pbkdf2',
             kdfparams: {
               c: 262144,
               dklen: 32,
               prf: 'hmac-sha256',
-              salt: 'cbbac76f1f35e9e17c319cbf7cfa5285eb6d0183f02503aeb961ad2ac2d71d43'
-            },
-            mac: '8147da4a969511e9ff9a662d8caaf82ac469c6b948edcb562e184d8b10a34ab8'
-          },
-          id: 'uuid.v4()',
-          version: 3
+              salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd'
+            }
+          }
         }
       },
       res: {
