@@ -74,7 +74,7 @@ keystore = {
     cipherparams: {
       iv: 'd32116e6157fde33fa0c7e0e4001e145'
     },
-    mac: 'ed9d66f2c1ade5fdaa4516cc5839c6533e3395afcad028941e87dd7a3bbd6851',
+    mac: '82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe',
     kdf: 'pbkdf2',
     kdfparams: {
       c: 262144,
@@ -113,7 +113,7 @@ keystore = {
     cipherparams: {
       iv: 'd32116e6157fde33fa0c7e0e4001e145'
     },
-    mac: 'ed9d66f2c1ade5fdaa4516cc5839c6533e3395afcad028941e87dd7a3bbd6851',
+    mac: '82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe',
     kdf: 'pbkdf2',
     kdfparams: {
       c: 262144,
