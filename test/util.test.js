@@ -131,8 +131,22 @@ describe('GallacticKeys - utils - crypto', function () {
       .to.equal('object');
   });
 
-  it('"getAddressByPubKey" should return ')
-  it('"getAddressByPrivKey" should return ')
+  it('"getAddressByPubKey" should return address given public key', function () {
+    let pubKey = '2D47D0F43B27C57815E3317624742468D929544DF142ABA49AFFD9E00C8B1FCF';
+    let result = crypto.getAddressByPubKey(pubKey);
+    expect(result).to.be.a('string');
+    expect(result.length).to.equal(40);
+    expect(result).to.equal('511C8A02ED0C64E556AB8AC555BE1BA78C822CE2');
+  });
+
+  it('"getAddressByPrivKey" should return address given private key', function () {
+    let privKey = 'B3F4AE2C242ACEE2374C49990DD196361A88B25EDA473947A381830B3B4D418F2D47D0F43B27C57815E3317624742468D929544DF142ABA49AFFD9E00C8B1FCF';
+    let result = crypto.getAddressByPrivKey(privKey);
+    expect(result).to.be.a('string');
+    expect(result.length).to.equal(40);
+    expect(result).to.equal('511C8A02ED0C64E556AB8AC555BE1BA78C822CE2');
+  });
+
   it('"getAcAddrByPrivKey" should return account address given private key', function () {
     let privKey = '8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08';
     let result = crypto.getAcAddrByPrivKey(privKey);

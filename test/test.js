@@ -103,7 +103,7 @@ describe('GallacticKeys', function () {
         }
       },
       res: {
-        address: 'acQUFGxsXVPSd6vbAceSkURnWhYhApE9VRe',
+        address: 'acWmVcNrHzxBF8L25vdiKLsz664ZGkYmPRj',
         crypto: {
           cipher: 'aes-128-ctr',
           cipherparams: {
@@ -135,7 +135,7 @@ describe('GallacticKeys', function () {
         }
       },
       res: {
-        address: 'acQUFGxsXVPSd6vbAceSkURnWhYhApE9VRe',
+        address: 'acWmVcNrHzxBF8L25vdiKLsz664ZGkYmPRj',
         crypto: {
           cipher: 'aes-128-ctr',
           cipherparams: {},
@@ -188,7 +188,7 @@ describe('GallacticKeys', function () {
         }
       },
       res: {
-        address: 'vaTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Q8',
+        address: 'vaZVTNthTQ9nromHQN4KYwjLFTr44ns8FZs',
         crypto: {
           cipher: 'aes-128-ctr',
           cipherparams: {
