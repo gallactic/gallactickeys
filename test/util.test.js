@@ -3,6 +3,7 @@
 var gallactickeys = typeof window !== 'undefined' ? window.GallacticKeys : require('../index');
 var expect = typeof window !== 'undefined' ? window.expect : require('chai').expect;
 var globalOrWindow = (typeof window !== 'undefined' ? window : global);
+var testData = (typeof window !== 'undefined' ? window : require('./util.td')).utilTd;
 
 describe('GallacticKeys - utils', function () {
   it('should have util object', function () {
@@ -91,7 +92,33 @@ describe('GallacticKeys - utils - crypto', function () {
     expect(util.isSeedHash(crypto.hashSeed(seed))).to.equal(true);
   });
 
-  it('"makeKeyPair" should return a key pair object given a seed')
+  it('"makeKeyPair" should return a key pair object given a seed hash', function () {
+    var makeKeyPairObj = crypto.makeKeyPair(testData.seedHash.valid);
+    var pubKey = makeKeyPairObj.publicKey;
+    var privKey = makeKeyPairObj.privateKey;
+    expect(makeKeyPairObj).to.be.an('object');
+    expect(pubKey).to.exist;
+    expect(privKey).to.exist;
+    expect(pubKey.length).to.equal(32);
+    expect(privKey.length).to.equal(64);
+  });
+
+  it('"makeKeyPair" should throw an error given an invalid seed hash', function (done) {
+    let test = {
+      function: (input) => {
+        try {
+          return crypto.makeKeyPair(input);
+        } catch (e) {
+          return e;
+        }
+      },
+      validate: (output) => {
+        expect(output).to.be.an('error');
+      }
+    };
+    test.data = testData.seedHash.invalid;
+    globalOrWindow.runTest(test, done);
+  });
 
   it('"deriveKey" should return secret key given password', function () {
     expect(typeof crypto.deriveKey('password', 'somesalt', { kdf: 'pbkdf2' }))
@@ -117,8 +144,7 @@ describe('GallacticKeys - utils - crypto', function () {
       key: crypto.generateIv(16),
       iv: crypto.generateSalt(16)
     }
-    expect(typeof crypto.encrypt(data.text, data.key, data.iv))
-      .to.equal('object');
+    expect(typeof crypto.encrypt(data.text, data.key, data.iv)).to.equal('object');
   });
 
   it('"decrypt" should return private key buffer given ciphertext, key, iv and algorithm', function () {
@@ -131,41 +157,58 @@ describe('GallacticKeys - utils - crypto', function () {
       .to.equal('object');
   });
 
-  it('"getAddressByPubKey" should return address given public key', function () {
-    let pubKey = '2D47D0F43B27C57815E3317624742468D929544DF142ABA49AFFD9E00C8B1FCF';
-    let result = crypto.getAddressByPubKey(pubKey);
-    expect(result).to.be.a('string');
-    expect(result.length).to.equal(40);
-    expect(result).to.equal('511C8A02ED0C64E556AB8AC555BE1BA78C822CE2');
+  it('"getAddressByPubKey" should return a 40-byte address, given a valid Public Key ', function (done) {
+    var address = crypto.getAddressByPubKey(testData.keys.publicKey.valid);
+    expect(address).to.exist;
+    expect(address.length).to.equal(40);
+    expect(util.isHexString(address)).to.be.true;
+    done();
   });
 
-  it('"getAddressByPrivKey" should return address given private key', function () {
-    let privKey = 'B3F4AE2C242ACEE2374C49990DD196361A88B25EDA473947A381830B3B4D418F2D47D0F43B27C57815E3317624742468D929544DF142ABA49AFFD9E00C8B1FCF';
-    let result = crypto.getAddressByPrivKey(privKey);
-    expect(result).to.be.a('string');
-    expect(result.length).to.equal(40);
-    expect(result).to.equal('511C8A02ED0C64E556AB8AC555BE1BA78C822CE2');
+
+  it('"getAddressByPubKey" should throw an error, given an invalid Public Key ', function (done) {
+    let test = {
+      function: (input) => {
+        try {
+          return crypto.getAddressByPubKey(input);
+        } catch (e) {
+          return e;
+        }
+      },
+      validate: (output) => {
+        expect(output).to.be.an('error');
+      }
+    };
+
+    test.data = testData.keys.publicKey.invalid;
+    globalOrWindow.runTest(test, done);
   });
 
-  it('"getAcAddrByPrivKey" should return account address given private key', function () {
-    let privKey = '8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08';
-    let result = crypto.getAcAddrByPrivKey(privKey);
-    expect(result).to.be.a('string');
-    expect(result.length).to.be.within(34, 35);
+
+  it('"getAddressByPrivKey" should return a 40-byte address, given a valid Private Key (64-bytes Hex String)', function (done) {
+    var address = crypto.getAddressByPrivKey(testData.keys.privateKey.valid);
+    expect(address).to.exist;
+    expect(address.length).to.equal(40);
+    expect(util.isHexString(address)).to.be.true;
+    done();
   });
 
-  it('"getAcAddrByPrivKey" should return account address given private key', function () {
-    let privKey = '8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08';
-    let result = crypto.getVaAddrByPrivKey(privKey);
-    expect(result).to.be.a('string');
-    expect(result.length).to.be.within(34, 35);
-  });
+  it('"getAddressByPrivKey" should throw an error, given an invalid Prvate Key', function (done) {
+    let test = {
+      function: (input) => {
+        try {
+          return crypto.getAddressByPrivKey(input);
+        } catch (e) {
+          return e;
+        }
+      },
+      validate: (output) => {
+        expect(output).to.be.an('error');
+      }
+    };
 
-  it('"getPubKeyByPrivKey" should return public key given private key', function () {
-    let privKey = '8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08';
-    let result = crypto.getPubKeyByPrivKey(privKey);
-    expect(result).to.be.a('string');
-    expect(result.length).to.equal(64);
+    test.data = testData.keys.privateKey.invalid;
+    globalOrWindow.runTest(test, done);
   });
 
   it('"encodeAddress", should return the encoded address based on given address and option', function (done) {
@@ -187,7 +230,7 @@ describe('GallacticKeys - utils - crypto', function () {
         address: '6AE5EF855FE4F3771D1B6D6B73E21065ED7670EC',
         type: 1
       },
-      validate: function(res) {
+      validate: function (res) {
         expect(res).to.equal('acHx3dYGX9pB7xPFZA58ZMcN4kYEooJMVds');
       }
     }, {
@@ -210,8 +253,68 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done);
   });
 
-  it('"isCipherAvailable" should return ')
-  it('"makeKeyPairFromSeed" should return ')
+  it('"isCipherAvailable" should return true, provided a valid cipher name', function (done) {
+    var cipher = crypto.isCipherAvailable(testData.cipher.valid);
+    expect(cipher).to.be.true;
+    done();
+  });
+
+  it('"isCipherAvailable" should return false, provided an invalid cipher name', function (done) {
+
+    let test = {
+      function: (input) => {
+        try {
+          return crypto.isCipherAvailable(input);
+        } catch (e) {
+          return e;
+        }
+      },
+      validate: (output) => {
+        expect(output).to.equal(false);
+      }
+    };
+
+    test.data = testData.cipher.invalid;
+    globalOrWindow.runTest(test, done);
+  });
+  it('"makeKeyPairFromSeed" should return a buffer object, provided a valid buffer', function (done) {
+    const test = {
+      function: (input) => {
+        let result = crypto.makeKeyPairFromSeed(input.buffer);
+        return result;
+      },
+      validate: (output) => {
+        var pubKey = output.publicKey;
+        var privKey = output.secretKey;
+        expect(pubKey).to.exist;
+        expect(privKey).to.exist;
+        expect(pubKey.length).to.equal(32);
+        expect(privKey.length).to.equal(64);
+      }
+    }
+    test.data = testData.makeKeyPairFromSeed.valid;
+    globalOrWindow.runTest(test, done)
+
+  });
+
+  it('"makeKeyPairFromSeed" should throw and error, provided an invalid buffer', function (done) {
+    const test = {
+      function: (input) => {
+        try {
+          let result = crypto.makeKeyPairFromSeed(input.buffer);
+          return result;
+        } catch (e) {
+          return e;
+        }
+      },
+      validate: (output) => {
+        expect(output).to.be.an('error');
+      }
+    }
+    test.data = testData.makeKeyPairFromSeed.invalid;
+    globalOrWindow.runTest(test, done)
+
+  });
 
   it('"createMac" should return Hex string of mac given derivedKey and cipherText', function () {
     let data = {
@@ -222,6 +325,71 @@ describe('GallacticKeys - utils - crypto', function () {
     expect(crypto.createMac(data.derivedKey, data.ciphertext)).to.be.a('string');
   });
 
-  it('"generateSalt" should return ')
-  it('"generateIv" should return ')
+  it('"generateSalt" should return a buffer object, provided a valid numeric size >=0', function (done) {
+    const test = {
+      function: (input) => {
+        let result = crypto.generateSalt(input);
+        return result;
+      },
+      validate: (output) => {
+        expect(typeof output).to.equal('object');
+      }
+    }
+    test.data = testData.sizeGenerateSalt.valid;
+    globalOrWindow.runTest(test, done)
+  });
+
+  it('"generateSalt" should return an error, provided a non-numeric or value < 0 as input', function (done) {
+    const test = {
+
+      function: (input) => {
+        try {
+          let result = crypto.generateSalt(input);
+          return result;
+        } catch (e) {
+          return e;
+        }
+      },
+      validate: (output) => {
+        var errorMsg = 'size must be a number >= 0';
+        expect(output.message).to.equal(errorMsg);
+      }
+    }
+    test.data = testData.sizeGenerateSalt.invalid;
+    globalOrWindow.runTest(test, done)
+  });
+
+  it('"generateIv" should return a buffer object, provided a valid numeric size >=0', function (done) {
+    const test = {
+      function: (input) => {
+        let result = crypto.generateIv(input);
+        return result;
+      },
+      validate: (output) => {
+        expect(typeof output).to.equal('object');
+      }
+    }
+    test.data = testData.sizeGenerateIv.valid;
+    globalOrWindow.runTest(test, done)
+  });
+
+  it('"generateIv" should return an error, provided a non-numeric or value < 0 as input', function (done) {
+    const test = {
+
+      function: (input) => {
+        try {
+          let result = crypto.generateIv(input);
+          return result;
+        } catch (e) {
+          return e;
+        }
+      },
+      validate: (output) => {
+        var errorMsg = 'size must be a number >= 0';
+        expect(output.message).to.equal(errorMsg);
+      }
+    }
+    test.data = testData.sizeGenerateIv.invalid;
+    globalOrWindow.runTest(test, done)
+  });
 });
