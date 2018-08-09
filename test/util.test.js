@@ -81,9 +81,14 @@ describe('GallacticKeys - utils - crypto', function () {
   it('should have "getVaAddrByPrivKey" function', () => expect(crypto.getVaAddrByPrivKey).to.be.a('function'));
   it('should have "getPubKeyByPrivKey" function', () => expect(crypto.getPubKeyByPrivKey).to.be.a('function'));
   it('should have "encodeAddress" function', () => expect(crypto.encodeAddress).to.be.a('function'));
+  it('should have "decodeAddress" function', () => expect(crypto.decodeAddress).to.be.a('function'));
   it('should have "isCipherAvailable" function', () => expect(crypto.isCipherAvailable).to.be.a('function'));
   it('should have "makeKeyPairFromSeed" function', () => expect(crypto.makeKeyPairFromSeed).to.be.a('function'));
   it('should have "createMac" function', () => expect(crypto.createMac).to.be.a('function'));
+  it('should have "isAddress" function', () => expect(crypto.isAddress).to.be.a('function'));
+  it('should have "isTmAddress" function', () => expect(crypto.isTmAddress).to.be.a('function'));
+  it('should have "isAcAddress" function', () => expect(crypto.isAcAddress).to.be.a('function'));
+  it('should have "isVaAddress" function', () => expect(crypto.isVaAddress).to.be.a('function'));
   it('should have "generateSalt" function', () => expect(crypto.generateSalt).to.be.a('function'));
   it('should have "generateIv" function', () => expect(crypto.generateIv).to.be.a('function'));
 
@@ -165,7 +170,6 @@ describe('GallacticKeys - utils - crypto', function () {
     done();
   });
 
-
   it('"getAddressByPubKey" should throw an error, given an invalid Public Key ', function (done) {
     let test = {
       function: (input) => {
@@ -183,7 +187,6 @@ describe('GallacticKeys - utils - crypto', function () {
     test.data = utilTd.keys.publicKey.invalid;
     globalOrWindow.runTest(test, done);
   });
-
 
   it('"getAddressByPrivKey" should return a 40-byte address, given a valid Private Key (64-bytes Hex String)', function (done) {
     var address = crypto.getAddressByPrivKey(utilTd.keys.privateKey.valid);
@@ -211,7 +214,7 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done);
   });
 
-  it('"encodeAddress", should return the encoded address based on given address and option', function (done) {
+  it('"encodeAddress" should return the encoded address based on given address and option', function (done) {
     const test = {
       function: function (data) {
         try {
@@ -253,6 +256,18 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done);
   });
 
+  it('"decodeAddress" should return the decoded address given encoded address', function (done) {
+    const test = {
+      function: (input) => {
+        return crypto.decodeAddress(input.address);
+      },
+      validate: (output) => { }
+    };
+
+    test.data = utilTd.decodeAddress.valid;
+    globalOrWindow.runTest(test, done);
+  })
+
   it('"isCipherAvailable" should return true, provided a valid cipher name', function (done) {
     var cipher = crypto.isCipherAvailable(utilTd.cipher.valid);
     expect(cipher).to.be.true;
@@ -277,6 +292,7 @@ describe('GallacticKeys - utils - crypto', function () {
     test.data = utilTd.cipher.invalid;
     globalOrWindow.runTest(test, done);
   });
+
   it('"makeKeyPairFromSeed" should return a buffer object, provided a valid buffer', function (done) {
     const test = {
       function: (input) => {
@@ -323,6 +339,62 @@ describe('GallacticKeys - utils - crypto', function () {
     };
 
     expect(crypto.createMac(data.derivedKey, data.ciphertext)).to.be.a('string');
+  });
+
+  it('"isAddress" should return boolean value based on given address', function(done) {
+    const test = {
+      function: (input) => {
+        return crypto.isAddress(input.address);
+      },
+      validate: (output) => {
+        expect(output).to.equal(true);
+      }
+    };
+
+    test.data = utilTd.isAddress.valid;
+    globalOrWindow.runTest(test, done);
+  });
+
+  it('"isTmAddress" should return boolean value based on given address', function(done) {
+    const test = {
+      function: (input) => {
+        return crypto.isTmAddress(input.address);
+      },
+      validate: (output) => {
+        expect(output).to.equal(true);
+      }
+    };
+
+    test.data = utilTd.isTmAddress.valid;
+    globalOrWindow.runTest(test, done);
+  });
+
+  it('"isAcAddress" should return boolean value based on given address', function(done) {
+    const test = {
+      function: (input) => {
+        return crypto.isAcAddress(input.address);
+      },
+      validate: (output) => {
+        expect(output).to.equal(true);
+      }
+    };
+
+    test.data = utilTd.isAcAddress.valid;
+    globalOrWindow.runTest(test, done);
+  });
+
+  it('"isVaAddress" should return boolean value based on given address', function(done) {
+    const test = {
+      function: (input) => {
+        return crypto.isVaAddress(input.address);
+      },
+      validate: (output) => {
+        expect(output).to.equal(true);
+      }
+    };
+
+    test.data = utilTd.isVaAddress.valid;
+    globalOrWindow.runTest(test, done);
   });
 
   it('"generateSalt" should return a buffer object, provided a valid numeric size >=0', function (done) {
