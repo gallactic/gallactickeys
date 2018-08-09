@@ -1,11 +1,11 @@
 'use strict'
 
 var expect = typeof window !== 'undefined' ? window.expect : require('chai').expect;
-var glOrExport = (typeof window !== 'undefined' ? window : module.exports);
-var errorMsg;
 
-glOrExport.igcTd = {};
-glOrExport.igcTd.create = {
+var errorMsg;
+const _gcTd = {};
+
+_gcTd.create = {
   valid: [
     /*** should return a key account based on given seed ***/
     {
@@ -54,7 +54,7 @@ glOrExport.igcTd.create = {
     // }
   ]
 };
-glOrExport.igcTd.export = {
+_gcTd.export = {
   valid: [
     {
       input: {
@@ -1166,7 +1166,7 @@ glOrExport.igcTd.export = {
         }
       },
       validate: (output) => {
-        errorMsg = 'Invalid IV length';
+        errorMsg = typeof window !== 'undefined' ? 'invalid iv length 32' : 'Invalid IV length';
         expect(output.message).to.equal(errorMsg);
       }
     },
@@ -1188,7 +1188,7 @@ glOrExport.igcTd.export = {
         }
       },
       validate: (output) => {
-        errorMsg = 'Invalid IV length';
+        errorMsg = typeof window !== 'undefined' ? 'invalid iv length 31' : 'Invalid IV length';
         expect(output.message).to.equal(errorMsg);
       }
     },
@@ -1276,13 +1276,17 @@ glOrExport.igcTd.export = {
         }
       },
       validate: (output) => {
-        errorMsg = 'Bad digest name';
-        expect(output.message).to.equal(errorMsg);
+        // NOTE: exception for nodejs, as it will throw an error. But in browser
+        //       it will not throw an error.
+        if (typeof window === 'undefined') {
+          errorMsg = 'Bad digest name';
+          expect(output.message).to.equal(errorMsg);
+        }
       }
     }
   ]
 };
-glOrExport.igcTd.recover = {
+_gcTd.recover = {
   valid: [
     {
       input: {
@@ -3018,3 +3022,10 @@ glOrExport.igcTd.recover = {
     // }
   ]
 };
+
+if (typeof window !== 'undefined') {
+  window._gcTd = _gcTd;
+}
+else {
+  module.exports = { _gcTd };
+}
