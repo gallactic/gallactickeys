@@ -120,9 +120,19 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done);
   });
 
-  it('"deriveKey" should return secret key given password', function () {
-    expect(typeof crypto.deriveKey('password', 'somesalt', { kdf: 'pbkdf2' }))
-      .to.equal('object');
+  it('"deriveKey" should return secret key given password', function (done) {
+    this.timeout(60000)
+    const test = {
+      function: (input) => {
+        return crypto.deriveKey(input.password, input.salt, input.option);
+      },
+      validate: (output) => {
+        expect(typeof output).to.equal('object');
+      }
+    };
+
+    test.data = utilTd.deriveKey.valid;
+    globalOrWindow.runTest(test, done);
   });
 
   it('"marshal" should return a keystore object given derivedKey, privatekey, salt and iv', function () {

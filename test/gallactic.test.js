@@ -45,13 +45,21 @@ globalOrWindow.runTest = function (test, done, count = 0) {
         }
         globalOrWindow.runTest(test, done, ++count);
       })
-      .catch(done);
+      .catch(e => {
+        console.log(`   Testing case number: ${count}`);
+        done(e);
+      });
   } else {
-    test.validate(res);
-    if (test.data[count].validate) {
-      test.data[count].validate(res);
+    try {
+      test.validate(res);
+      if (test.data[count].validate) {
+        test.data[count].validate(res);
+      }
+      globalOrWindow.runTest(test, done, ++count);
+    } catch (e) {
+      console.log(`   Testing case number: ${count}`);
+      done(e);
     }
-    globalOrWindow.runTest(test, done, ++count);
   }
 };
 

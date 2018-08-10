@@ -18,54 +18,39 @@ const seed = {
 
 const _utilTd = {};
 _utilTd.seed = seed;
-_utilTd.makeKeyPairFromSeed = {
+_utilTd.deriveKey = {
   valid: [
     {
       input: {
-        buffer: util.strToBuffer(crypto.hashSeed(seed.valid, {
-          algorithm: 'sha256'
-        }))
-      },
-      validate: (output) => {
-        expect(output).to.be.an('object');
-      }
-    }
-  ],
-  invalid: [
-    {
-      input: {
-        buffer: util.strToBuffer(seed.invalid.invalidLength1),
-      },
-      validate: (output) => {
-        errorMsg = 'bad seed size'
-        expect(output.message).to.equal(errorMsg);
+        password: 'testPassword',
+        salt: 'salt',
+        option: { kdf: 'pbkdf2' }
       }
     },
     {
       input: {
-        buffer: util.strToBuffer(seed.invalid.invalidLength2),
-      },
-      validate: (output) => {
-        errorMsg = 'bad seed size'
-        expect(output.message).to.equal(errorMsg);
+        password: 'testPassword',
+        salt: 'salt',
+        option: {
+          kdf: 'pbkdf2',
+          c: 2440,
+          dklen: 12,
+          prf: 'sha256'
+        }
       }
     },
     {
       input: {
-        buffer: seed.invalid.undefined
-      },
-      validate: (output) => {
-        errorMsg = 'unexpected type, use Uint8Array'
-        expect(output.message).to.equal(errorMsg);
+        password: 'testPassword',
+        salt: 'salt',
+        option: { kdf: 'scrypt' }
       }
     },
     {
       input: {
-        buffer: seed.invalid.invalidLength2
-      },
-      validate: (output) => {
-        errorMsg = 'unexpected type, use Uint8Array'
-        expect(output.message).to.equal(errorMsg);
+        password: 'testPassword',
+        salt: 'salt',
+        option: { kdf: 'scrypt', n: 2440, r: 6, p: 1, dklen: 12 }
       }
     }
   ]
@@ -216,6 +201,58 @@ _utilTd.cipher = {
     }
   ]
 }
+_utilTd.makeKeyPairFromSeed = {
+  valid: [
+    {
+      input: {
+        buffer: util.strToBuffer(crypto.hashSeed(seed.valid, {
+          algorithm: 'sha256'
+        }))
+      },
+      validate: (output) => {
+        expect(output).to.be.an('object');
+      }
+    }
+  ],
+  invalid: [
+    {
+      input: {
+        buffer: util.strToBuffer(seed.invalid.invalidLength1),
+      },
+      validate: (output) => {
+        errorMsg = 'bad seed size'
+        expect(output.message).to.equal(errorMsg);
+      }
+    },
+    {
+      input: {
+        buffer: util.strToBuffer(seed.invalid.invalidLength2),
+      },
+      validate: (output) => {
+        errorMsg = 'bad seed size'
+        expect(output.message).to.equal(errorMsg);
+      }
+    },
+    {
+      input: {
+        buffer: seed.invalid.undefined
+      },
+      validate: (output) => {
+        errorMsg = 'unexpected type, use Uint8Array'
+        expect(output.message).to.equal(errorMsg);
+      }
+    },
+    {
+      input: {
+        buffer: seed.invalid.invalidLength2
+      },
+      validate: (output) => {
+        errorMsg = 'unexpected type, use Uint8Array'
+        expect(output.message).to.equal(errorMsg);
+      }
+    }
+  ]
+};
 _utilTd.sizeGenerateSalt = {
   valid: [
     {
