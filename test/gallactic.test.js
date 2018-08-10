@@ -3,7 +3,7 @@
 var gallactickeys = typeof window !== 'undefined' ? window.GallacticKeys : require('../index');
 var expect = typeof window !== 'undefined' ? window.expect : require('chai').expect;
 var globalOrWindow = (typeof window !== 'undefined' ? window : global);
-var testData = (typeof window !== 'undefined' ? window : require('./intergallactic.td')).igcTd;
+var igcTd = (typeof window !== 'undefined' ? window : require('./gallactic.td'))._gcTd;
 
 const length = {
   publicKey: 64,
@@ -28,7 +28,9 @@ globalOrWindow.runTest = function (test, done, count = 0) {
   if (test.data.length === count) {
     return done();
   }
-  process.stdout.write(`Testing case number: ${count}\r`);
+  if (typeof process !== 'undefined') {
+    process.stdout.write(`Testing case number: ${count}\r`);
+  }
 
   let beforeTest = test.before ? test.before() : null;
   let res = beforeTest && typeof beforeTest.then === 'function' ?
@@ -54,8 +56,6 @@ globalOrWindow.runTest = function (test, done, count = 0) {
 };
 
 describe('GallacticKeys', function () {
-  this.timeout(5000);
-
   it('create - should return expected response', function (done) {
     const test = {
       function: (input) => {
@@ -80,7 +80,7 @@ describe('GallacticKeys', function () {
         expect(output.seed.split(' ').length).to.equal(length.seed);
       }
     };
-    test.data = testData.create.valid;
+    test.data = igcTd.create.valid;
 
     globalOrWindow.runTest(test, done);
   });
@@ -101,12 +101,12 @@ describe('GallacticKeys', function () {
       }
 
     };
-    test.data = testData.create.invalid;
+    test.data = igcTd.create.invalid;
     globalOrWindow.runTest(test, done);
   });
 
   it('exportAc - should return export key info to keystore "secret-storage" format', function (done) {
-    this.timeout(10000);
+    this.timeout(60000);
 
     let test = {
       function: (input) => {
@@ -114,26 +114,40 @@ describe('GallacticKeys', function () {
         return result;
       },
       validate: (output) => {
-        expect(output.address).to.exist.and.be.a('string');
-        expect(output.crypto).to.exist.and.be.an('object');
-        expect(output.crypto.cipher).to.exist.and.be.a('string');
-        expect(output.crypto.ciphertext).to.exist.and.be.a('string');
+        expect(output.address).to.exist;
+        expect(output.crypto).to.exist;
+        expect(output.crypto.cipher).to.exist;
+        expect(output.crypto.ciphertext).to.exist;
         expect(output.crypto.cipherparams).to.exist;
-        expect(output.crypto.cipherparams.iv).to.exist.and.be.a('string');
-        expect(output.crypto.mac).to.exist.and.be.a('string');
+        expect(output.crypto.cipherparams.iv).to.exist;
+        expect(output.crypto.mac).to.exist;
         expect(output.crypto.kdf).to.exist;
-        expect(output.crypto.kdfparams).to.exist.and.be.an('object');
-        expect(output.crypto.kdfparams.c).to.exist.and.be.a('number');
-        expect(output.crypto.kdfparams.dklen).to.exist.and.be.a('number');
-        expect(output.crypto.kdfparams.prf).to.exist.and.be.a('string');
-        expect(output.crypto.kdfparams.salt).to.exist.and.be.a('string');
+        expect(output.crypto.kdfparams).to.exist;
+        expect(output.crypto.kdfparams.c).to.exist;
+        expect(output.crypto.kdfparams.dklen).to.exist;
+        expect(output.crypto.kdfparams.prf).to.exist;
+        expect(output.crypto.kdfparams.salt).to.exist;
+
+        expect(output.address).to.be.a('string');
+        expect(output.crypto).to.be.an('object');
+        expect(output.crypto.cipher).to.be.a('string');
+        expect(output.crypto.ciphertext).to.be.a('string');
+        expect(output.crypto.cipherparams.iv).to.be.a('string');
+        expect(output.crypto.mac).to.be.a('string');
+        expect(output.crypto.kdfparams).to.be.an('object');
+        expect(output.crypto.kdfparams.c).to.be.a('number');
+        expect(output.crypto.kdfparams.dklen).to.be.a('number');
+        expect(output.crypto.kdfparams.prf).to.be.a('string');
+        expect(output.crypto.kdfparams.salt).to.be.a('string');
       }
     };
-    test.data = testData.export.valid;
+    test.data = igcTd.export.valid;
     globalOrWindow.runTest(test, done);
   });
 
   it('exportAc - should throw an error, provided incorrect parameters as input', function (done) {
+    this.timeout(10000);
+
     let test = {
       function: (input) => {
         try {
@@ -148,12 +162,12 @@ describe('GallacticKeys', function () {
 
       }
     };
-    test.data = testData.export.invalid;
+    test.data = igcTd.export.invalid;
     globalOrWindow.runTest(test, done);
   });
 
   it('exportVa - should return export key info to keystore "secret-storage" format', function (done) {
-    this.timeout(10000);
+    this.timeout(60000);
 
     let test = {
       function: (input) => {
@@ -161,14 +175,16 @@ describe('GallacticKeys', function () {
         return result;
       },
       validate: (output) => {
-        // expect(output.address).to.equal('vaTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Q8');
+
       }
     };
-    test.data = testData.export.valid;
+    test.data = igcTd.export.valid;
     globalOrWindow.runTest(test, done);
   });
 
   it('exportVa - should throw an error, provided incorrect parameters as input', function (done) {
+    this.timeout(10000);
+
     let test = {
       function: (input) => {
         try {
@@ -183,7 +199,7 @@ describe('GallacticKeys', function () {
 
       }
     };
-    test.data = testData.export.invalid;
+    test.data = igcTd.export.invalid;
     globalOrWindow.runTest(test, done);
   });
 
@@ -194,14 +210,17 @@ describe('GallacticKeys', function () {
         return result;
       },
       validate: (output) => {
-        expect(output).to.be.exist.and.be.a('string');
+        expect(output).to.be.exist;
+        expect(output).to.be.a('string');
       }
     }
-    test.data = testData.recover.valid;
+    test.data = igcTd.recover.valid;
     globalOrWindow.runTest(test, done);
   });
 
   it('recover - should throw an error, provided incorrect parameters as input', function (done) {
+    this.timeout(60000);
+
     let test = {
       function: (input) => {
         try {
@@ -216,7 +235,7 @@ describe('GallacticKeys', function () {
 
       }
     }
-    test.data = testData.recover.invalid;
+    test.data = igcTd.recover.invalid;
     globalOrWindow.runTest(test, done);
   });
 });

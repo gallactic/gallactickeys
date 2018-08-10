@@ -2,7 +2,6 @@
 
 var expect = typeof window !== 'undefined' ? window.expect : require('chai').expect;
 var gallactickeys = typeof window !== 'undefined' ? window.GallacticKeys : require('../index');
-var glOrExport = (typeof window !== 'undefined' ? window : module.exports);
 
 var errorMsg = '';
 const util = gallactickeys.utils.util;
@@ -17,9 +16,9 @@ const seed = {
   }
 };
 
-glOrExport.utilTd = {};
-glOrExport.utilTd.seed = seed;
-glOrExport.utilTd.makeKeyPairFromSeed = {
+const _utilTd = {};
+_utilTd.seed = seed;
+_utilTd.makeKeyPairFromSeed = {
   valid: [
     {
       input: {
@@ -71,7 +70,7 @@ glOrExport.utilTd.makeKeyPairFromSeed = {
     }
   ]
 };
-glOrExport.utilTd.seedHash = {
+_utilTd.seedHash = {
   valid: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9',
   invalid: [
     {
@@ -108,7 +107,7 @@ glOrExport.utilTd.seedHash = {
     }
   ]
 };
-glOrExport.utilTd.keys = {
+_utilTd.keys = {
   publicKey: {
     valid: 'BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
     invalid: [
@@ -184,7 +183,7 @@ glOrExport.utilTd.keys = {
     ],
   }
 }
-glOrExport.utilTd.cipher = {
+_utilTd.cipher = {
   valid: 'aes-128-ctr',
   invalid: [
     {
@@ -217,7 +216,7 @@ glOrExport.utilTd.cipher = {
     }
   ]
 }
-glOrExport.utilTd.sizeGenerateSalt = {
+_utilTd.sizeGenerateSalt = {
   valid: [
     {
       input: 32,
@@ -244,27 +243,57 @@ glOrExport.utilTd.sizeGenerateSalt = {
   invalid: [
     {
       input: '',
-      validate: (output) => {}
+      validate: (output) => {
+        if (typeof window !== 'undefined') {
+          return;
+        }
+        var errorMsg = 'size must be a number >= 0';
+        expect(output.message).to.equal(errorMsg);
+      }
     },
     {
       input: 'abc',
-      validate: (output) => {}
+      validate: (output) => {
+        if (typeof window !== 'undefined') {
+          return;
+        }
+        var errorMsg = 'size must be a number >= 0';
+        expect(output.message).to.equal(errorMsg);
+      }
     },
     {
       input: '11',
-      validate: (output) => {}
+      validate: (output) => {
+        if (typeof window !== 'undefined') {
+          return;
+        }
+        var errorMsg = 'size must be a number >= 0';
+        expect(output.message).to.equal(errorMsg);
+      }
     },
     {
       input: '#',
-      validate: (output) => {}
+      validate: (output) => {
+        if (typeof window !== 'undefined') {
+          return;
+        }
+        var errorMsg = 'size must be a number >= 0';
+        expect(output.message).to.equal(errorMsg);
+      }
     },
     {
       input: -1,
-      validate: (output) => {},
+      validate: (output) => {
+        var errorMsg = 'size must be a number >= 0';
+        if (typeof window !== 'undefined') {
+          errorMsg = 'Invalid typed array length: -1';
+        }
+        expect(output.message).to.equal(errorMsg);
+      }
     }
   ]
 }
-glOrExport.utilTd.sizeGenerateIv = {
+_utilTd.sizeGenerateIv = {
   valid: [
     {
       input: 32,
@@ -291,23 +320,60 @@ glOrExport.utilTd.sizeGenerateIv = {
   invalid: [
     {
       input: '',
-      validate: (output) => {}
+      validate: (output) => {
+        if (typeof window !== 'undefined') {
+          return;
+        }
+        var errorMsg = 'size must be a number >= 0';
+        expect(output.message).to.equal(errorMsg);
+      }
     },
     {
       input: 'abc',
-      validate: (output) => {}
+      validate: (output) => {
+        if (typeof window !== 'undefined') {
+          return;
+        }
+        var errorMsg = 'size must be a number >= 0';
+        expect(output.message).to.equal(errorMsg);
+      }
     },
     {
       input: '11',
-      validate: (output) => {}
+      validate: (output) => {
+        if (typeof window !== 'undefined') {
+          return;
+        }
+        var errorMsg = 'size must be a number >= 0';
+        expect(output.message).to.equal(errorMsg);
+      }
     },
     {
       input: '#',
-      validate: (output) => {}
+      validate: (output) => {
+        if (typeof window !== 'undefined') {
+          return;
+        }
+        var errorMsg = 'size must be a number >= 0';
+        expect(output.message).to.equal(errorMsg);
+      }
     },
     {
       input: -1,
-      validate: (output) => {},
+      validate: (output) => {
+        var errorMsg = 'size must be a number >= 0';
+        if (typeof window !== 'undefined') {
+          errorMsg = 'Invalid typed array length: -1';
+        }
+        expect(output.message).to.equal(errorMsg);
+      },
     }
   ]
+}
+
+if (typeof window !== 'undefined' && typeof window._utilTd === 'undefined') {
+  window._utilTd = _utilTd;
+}
+else {
+  module.exports = { _utilTd };
 }

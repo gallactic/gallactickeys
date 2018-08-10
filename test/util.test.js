@@ -3,7 +3,7 @@
 var gallactickeys = typeof window !== 'undefined' ? window.GallacticKeys : require('../index');
 var expect = typeof window !== 'undefined' ? window.expect : require('chai').expect;
 var globalOrWindow = (typeof window !== 'undefined' ? window : global);
-var testData = (typeof window !== 'undefined' ? window : require('./util.td')).utilTd;
+var utilTd = (typeof window !== 'undefined' ? window : require('./util.td'))._utilTd;
 
 describe('GallacticKeys - utils', function () {
   it('should have util object', function () {
@@ -93,7 +93,7 @@ describe('GallacticKeys - utils - crypto', function () {
   });
 
   it('"makeKeyPair" should return a key pair object given a seed hash', function () {
-    var makeKeyPairObj = crypto.makeKeyPair(testData.seedHash.valid);
+    var makeKeyPairObj = crypto.makeKeyPair(utilTd.seedHash.valid);
     var pubKey = makeKeyPairObj.publicKey;
     var privKey = makeKeyPairObj.privateKey;
     expect(makeKeyPairObj).to.be.an('object');
@@ -113,10 +113,10 @@ describe('GallacticKeys - utils - crypto', function () {
         }
       },
       validate: (output) => {
-        expect(output).to.be.an('error');
+        expect(output instanceof Error).to.equal(true);
       }
     };
-    test.data = testData.seedHash.invalid;
+    test.data = utilTd.seedHash.invalid;
     globalOrWindow.runTest(test, done);
   });
 
@@ -158,7 +158,7 @@ describe('GallacticKeys - utils - crypto', function () {
   });
 
   it('"getAddressByPubKey" should return a 40-byte address, given a valid Public Key ', function (done) {
-    var address = crypto.getAddressByPubKey(testData.keys.publicKey.valid);
+    var address = crypto.getAddressByPubKey(utilTd.keys.publicKey.valid);
     expect(address).to.exist;
     expect(address.length).to.equal(40);
     expect(util.isHexString(address)).to.be.true;
@@ -176,17 +176,17 @@ describe('GallacticKeys - utils - crypto', function () {
         }
       },
       validate: (output) => {
-        expect(output).to.be.an('error');
+        expect(output instanceof Error).to.equal(true);
       }
     };
 
-    test.data = testData.keys.publicKey.invalid;
+    test.data = utilTd.keys.publicKey.invalid;
     globalOrWindow.runTest(test, done);
   });
 
 
   it('"getAddressByPrivKey" should return a 40-byte address, given a valid Private Key (64-bytes Hex String)', function (done) {
-    var address = crypto.getAddressByPrivKey(testData.keys.privateKey.valid);
+    var address = crypto.getAddressByPrivKey(utilTd.keys.privateKey.valid);
     expect(address).to.exist;
     expect(address.length).to.equal(40);
     expect(util.isHexString(address)).to.be.true;
@@ -203,11 +203,11 @@ describe('GallacticKeys - utils - crypto', function () {
         }
       },
       validate: (output) => {
-        expect(output).to.be.an('error');
+        expect(output instanceof Error).to.equal(true);
       }
     };
 
-    test.data = testData.keys.privateKey.invalid;
+    test.data = utilTd.keys.privateKey.invalid;
     globalOrWindow.runTest(test, done);
   });
 
@@ -254,7 +254,7 @@ describe('GallacticKeys - utils - crypto', function () {
   });
 
   it('"isCipherAvailable" should return true, provided a valid cipher name', function (done) {
-    var cipher = crypto.isCipherAvailable(testData.cipher.valid);
+    var cipher = crypto.isCipherAvailable(utilTd.cipher.valid);
     expect(cipher).to.be.true;
     done();
   });
@@ -274,7 +274,7 @@ describe('GallacticKeys - utils - crypto', function () {
       }
     };
 
-    test.data = testData.cipher.invalid;
+    test.data = utilTd.cipher.invalid;
     globalOrWindow.runTest(test, done);
   });
   it('"makeKeyPairFromSeed" should return a buffer object, provided a valid buffer', function (done) {
@@ -292,7 +292,7 @@ describe('GallacticKeys - utils - crypto', function () {
         expect(privKey.length).to.equal(64);
       }
     }
-    test.data = testData.makeKeyPairFromSeed.valid;
+    test.data = utilTd.makeKeyPairFromSeed.valid;
     globalOrWindow.runTest(test, done)
 
   });
@@ -308,10 +308,10 @@ describe('GallacticKeys - utils - crypto', function () {
         }
       },
       validate: (output) => {
-        expect(output).to.be.an('error');
+        expect(output instanceof Error).to.equal(true);
       }
     }
-    test.data = testData.makeKeyPairFromSeed.invalid;
+    test.data = utilTd.makeKeyPairFromSeed.invalid;
     globalOrWindow.runTest(test, done)
 
   });
@@ -335,7 +335,7 @@ describe('GallacticKeys - utils - crypto', function () {
         expect(typeof output).to.equal('object');
       }
     }
-    test.data = testData.sizeGenerateSalt.valid;
+    test.data = utilTd.sizeGenerateSalt.valid;
     globalOrWindow.runTest(test, done)
   });
 
@@ -350,12 +350,9 @@ describe('GallacticKeys - utils - crypto', function () {
           return e;
         }
       },
-      validate: (output) => {
-        var errorMsg = 'size must be a number >= 0';
-        expect(output.message).to.equal(errorMsg);
-      }
+      validate: (output) => {}
     }
-    test.data = testData.sizeGenerateSalt.invalid;
+    test.data = utilTd.sizeGenerateSalt.invalid;
     globalOrWindow.runTest(test, done)
   });
 
@@ -369,7 +366,7 @@ describe('GallacticKeys - utils - crypto', function () {
         expect(typeof output).to.equal('object');
       }
     }
-    test.data = testData.sizeGenerateIv.valid;
+    test.data = utilTd.sizeGenerateIv.valid;
     globalOrWindow.runTest(test, done)
   });
 
@@ -384,12 +381,9 @@ describe('GallacticKeys - utils - crypto', function () {
           return e;
         }
       },
-      validate: (output) => {
-        var errorMsg = 'size must be a number >= 0';
-        expect(output.message).to.equal(errorMsg);
-      }
+      validate: (output) => { }
     }
-    test.data = testData.sizeGenerateIv.invalid;
+    test.data = utilTd.sizeGenerateIv.invalid;
     globalOrWindow.runTest(test, done)
   });
 });
