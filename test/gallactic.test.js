@@ -45,13 +45,21 @@ globalOrWindow.runTest = function (test, done, count = 0) {
         }
         globalOrWindow.runTest(test, done, ++count);
       })
-      .catch(done);
+      .catch(e => {
+        console.log(`   Testing case number: ${count}`);
+        done(e);
+      });
   } else {
-    test.validate(res);
-    if (test.data[count].validate) {
-      test.data[count].validate(res);
+    try {
+      test.validate(res);
+      if (test.data[count].validate) {
+        test.data[count].validate(res);
+      }
+      globalOrWindow.runTest(test, done, ++count);
+    } catch (e) {
+      console.log(`   Testing case number: ${count}`);
+      done(e);
     }
-    globalOrWindow.runTest(test, done, ++count);
   }
 };
 
@@ -123,10 +131,17 @@ describe('GallacticKeys', function () {
         expect(output.crypto.mac).to.exist;
         expect(output.crypto.kdf).to.exist;
         expect(output.crypto.kdfparams).to.exist;
-        expect(output.crypto.kdfparams.c).to.exist;
         expect(output.crypto.kdfparams.dklen).to.exist;
-        expect(output.crypto.kdfparams.prf).to.exist;
         expect(output.crypto.kdfparams.salt).to.exist;
+        if (output.crypto.kdf==='pbkdf2') {
+          expect(output.crypto.kdfparams.c).to.exist;
+          expect(output.crypto.kdfparams.prf).to.exist;
+        }
+        else {
+          expect(output.crypto.kdfparams.n).to.exist;
+          expect(output.crypto.kdfparams.r).to.exist;
+          expect(output.crypto.kdfparams.p).to.exist;
+        }
 
         expect(output.address).to.be.a('string');
         expect(output.crypto).to.be.an('object');
@@ -135,10 +150,20 @@ describe('GallacticKeys', function () {
         expect(output.crypto.cipherparams.iv).to.be.a('string');
         expect(output.crypto.mac).to.be.a('string');
         expect(output.crypto.kdfparams).to.be.an('object');
-        expect(output.crypto.kdfparams.c).to.be.a('number');
         expect(output.crypto.kdfparams.dklen).to.be.a('number');
-        expect(output.crypto.kdfparams.prf).to.be.a('string');
         expect(output.crypto.kdfparams.salt).to.be.a('string');
+        expect(output.crypto.kdfparams).to.exist.and.be.an('object');
+        if (output.crypto.kdf==='pbkdf2'){
+          expect(output.crypto.kdfparams.c).to.exist.and.be.a('number');
+          expect(output.crypto.kdfparams.prf).to.exist.and.be.a('string');
+        }
+        else if (output.crypto.kdf==='scrypt'){
+          expect(output.crypto.kdfparams.n).to.exist.and.be.a('number');
+          expect(output.crypto.kdfparams.r).to.exist.and.be.a('number');
+          expect(output.crypto.kdfparams.p).to.exist.and.be.a('number');
+        }
+        expect(output.crypto.kdfparams.dklen).to.exist.and.be.a('number');
+        expect(output.crypto.kdfparams.salt).to.exist.and.be.a('string');
       }
     };
     test.data = igcTd.export.valid;

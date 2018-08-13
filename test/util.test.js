@@ -72,6 +72,8 @@ describe('GallacticKeys - utils - crypto', function () {
   it('should have "hashSeed" function', () => expect(crypto.hashSeed).to.be.a('function'));
   it('should have "makeKeyPair" function', () => expect(crypto.makeKeyPair).to.be.a('function'));
   it('should have "deriveKey" function', () => expect(crypto.deriveKey).to.be.a('function'));
+  it('should have "pbkdf2Dk" function', () => expect(crypto.pbkdf2Dk).to.be.a('function'));
+  it('should have "scryptDk" function', () => expect(crypto.scryptDk).to.be.a('function'))
   it('should have "marshal" function', () => expect(crypto.marshal).to.be.a('function'));
   it('should have "encrypt" function', () => expect(crypto.encrypt).to.be.a('function'));
   it('should have "decrypt" function', () => expect(crypto.decrypt).to.be.a('function'));
@@ -120,9 +122,22 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done);
   });
 
-  it('"deriveKey" should return secret key given password', function () {
-    expect(typeof crypto.deriveKey('password', 'somesalt', { kdf: 'pbkdf2' }))
-      .to.equal('object');
+  it('"deriveKey" should return secret key in buffer format given password', function (done) {
+    this.timeout(60000)
+    const test = {
+      function: (input) => {
+        return crypto.deriveKey(input.password, input.salt, input.option);
+      },
+      validate: (output) => {
+        if (typeof process !== undefined) {
+          expect(Buffer.isBuffer(output)).to.equal(true)
+        }
+        expect(typeof output).to.equal('object');
+      }
+    };
+
+    test.data = utilTd.deriveKey.valid;
+    globalOrWindow.runTest(test, done);
   });
 
   it('"marshal" should return a keystore object given derivedKey, privatekey, salt and iv', function () {

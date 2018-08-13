@@ -18,54 +18,39 @@ const seed = {
 
 const _utilTd = {};
 _utilTd.seed = seed;
-_utilTd.makeKeyPairFromSeed = {
+_utilTd.deriveKey = {
   valid: [
     {
       input: {
-        buffer: util.strToBuffer(crypto.hashSeed(seed.valid, {
-          algorithm: 'sha256'
-        }))
-      },
-      validate: (output) => {
-        expect(output).to.be.an('object');
-      }
-    }
-  ],
-  invalid: [
-    {
-      input: {
-        buffer: util.strToBuffer(seed.invalid.invalidLength1),
-      },
-      validate: (output) => {
-        errorMsg = 'bad seed size'
-        expect(output.message).to.equal(errorMsg);
+        password: 'testPassword',
+        salt: 'salt',
+        option: { kdf: 'pbkdf2' }
       }
     },
     {
       input: {
-        buffer: util.strToBuffer(seed.invalid.invalidLength2),
-      },
-      validate: (output) => {
-        errorMsg = 'bad seed size'
-        expect(output.message).to.equal(errorMsg);
+        password: 'testPassword',
+        salt: 'salt',
+        option: {
+          kdf: 'pbkdf2',
+          c: 2440,
+          dklen: 12,
+          prf: 'sha256'
+        }
       }
     },
     {
       input: {
-        buffer: seed.invalid.undefined
-      },
-      validate: (output) => {
-        errorMsg = 'unexpected type, use Uint8Array'
-        expect(output.message).to.equal(errorMsg);
+        password: 'testPassword',
+        salt: 'salt',
+        option: { kdf: 'scrypt' }
       }
     },
     {
       input: {
-        buffer: seed.invalid.invalidLength2
-      },
-      validate: (output) => {
-        errorMsg = 'unexpected type, use Uint8Array'
-        expect(output.message).to.equal(errorMsg);
+        password: 'testPassword',
+        salt: 'salt',
+        option: { kdf: 'scrypt', n: 2440, r: 6, p: 1, dklen: 12 }
       }
     }
   ]
@@ -143,7 +128,7 @@ _utilTd.keys = {
           expect(output.message).to.equal(errorMsg);
         }
       }
-    ],
+    ]
   },
   privateKey: {
     valid: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
@@ -180,9 +165,9 @@ _utilTd.keys = {
           expect(output.message).to.equal(errorMsg);
         }
       }
-    ],
+    ]
   }
-}
+};
 _utilTd.cipher = {
   valid: 'aes-128-ctr',
   invalid: [
@@ -215,7 +200,59 @@ _utilTd.cipher = {
       }
     }
   ]
-}
+};
+_utilTd.makeKeyPairFromSeed = {
+  valid: [
+    {
+      input: {
+        buffer: util.strToBuffer(crypto.hashSeed(seed.valid, {
+          algorithm: 'sha256'
+        }))
+      },
+      validate: (output) => {
+        expect(output).to.be.an('object');
+      }
+    }
+  ],
+  invalid: [
+    {
+      input: {
+        buffer: util.strToBuffer(seed.invalid.invalidLength1)
+      },
+      validate: (output) => {
+        errorMsg = 'bad seed size'
+        expect(output.message).to.equal(errorMsg);
+      }
+    },
+    {
+      input: {
+        buffer: util.strToBuffer(seed.invalid.invalidLength2)
+      },
+      validate: (output) => {
+        errorMsg = 'bad seed size'
+        expect(output.message).to.equal(errorMsg);
+      }
+    },
+    {
+      input: {
+        buffer: seed.invalid.undefined
+      },
+      validate: (output) => {
+        errorMsg = 'unexpected type, use Uint8Array'
+        expect(output.message).to.equal(errorMsg);
+      }
+    },
+    {
+      input: {
+        buffer: seed.invalid.invalidLength2
+      },
+      validate: (output) => {
+        errorMsg = 'unexpected type, use Uint8Array'
+        expect(output.message).to.equal(errorMsg);
+      }
+    }
+  ]
+};
 _utilTd.sizeGenerateSalt = {
   valid: [
     {
@@ -292,7 +329,7 @@ _utilTd.sizeGenerateSalt = {
       }
     }
   ]
-}
+};
 _utilTd.sizeGenerateIv = {
   valid: [
     {
@@ -366,10 +403,10 @@ _utilTd.sizeGenerateIv = {
           errorMsg = 'Invalid typed array length: -1';
         }
         expect(output.message).to.equal(errorMsg);
-      },
+      }
     }
   ]
-}
+};
 
 if (typeof window !== 'undefined' && typeof window._utilTd === 'undefined') {
   window._utilTd = _utilTd;
