@@ -168,6 +168,26 @@ _utilTd.keys = {
     ]
   }
 };
+_utilTd.decodeAddress = {
+  valid: [
+    {
+      input: {
+        address: 'acHx3dYGX9pB7xPFZA58ZMcN4kYEooJMVds'
+      },
+      validate: (output) => {
+        expect(output).to.equal('6AE5EF855FE4F3771D1B6D6B73E21065ED7670EC');
+      }
+    },
+    {
+      input: {
+        address: 'vaTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Q8'
+      },
+      validate: (output) => {
+        expect(output).to.equal('B26CE3E09C9D1234AD74BFDF57E20DB4F07A56E1');
+      }
+    }
+  ]
+};
 _utilTd.cipher = {
   valid: 'aes-128-ctr',
   invalid: [
@@ -249,6 +269,57 @@ _utilTd.makeKeyPairFromSeed = {
       validate: (output) => {
         errorMsg = 'unexpected type, use Uint8Array'
         expect(output.message).to.equal(errorMsg);
+      }
+    }
+  ]
+};
+_utilTd.isAddress = {
+  valid: [
+    {
+      input: {
+        address: 'vaTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Q8'
+      }
+    },
+    {
+      input: {
+        address: 'acHx3dYGX9pB7xPFZA58ZMcN4kYEooJMVds'
+      }
+    },
+    {
+      input: {
+        address: 'B26CE3E09C9D1234AD74BFDF57E20DB4F07A56E1'
+      }
+    }
+  ]
+};
+_utilTd.isTmAddress = {
+  valid: [
+    {
+      input: {
+        address: 'B26CE3E09C9D1234AD74BFDF57E20DB4F07A56E1'
+      }
+    },
+    {
+      input: {
+        address: '6AE5EF855FE4F3771D1B6D6B73E21065ED7670EC'
+      }
+    }
+  ]
+};
+_utilTd.isAcAddress = {
+  valid: [
+    {
+      input: {
+        address: 'acHx3dYGX9pB7xPFZA58ZMcN4kYEooJMVds'
+      }
+    }
+  ]
+};
+_utilTd.isVaAddress = {
+  valid: [
+    {
+      input: {
+        address: 'vaTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Q8'
       }
     }
   ]
