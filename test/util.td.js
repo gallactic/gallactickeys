@@ -128,7 +128,7 @@ _utilTd.keys = {
           expect(output.message).to.equal(errorMsg);
         }
       }
-    ],
+    ]
   },
   privateKey: {
     valid: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
@@ -165,9 +165,9 @@ _utilTd.keys = {
           expect(output.message).to.equal(errorMsg);
         }
       }
-    ],
+    ]
   }
-}
+};
 _utilTd.cipher = {
   valid: 'aes-128-ctr',
   invalid: [
@@ -200,7 +200,7 @@ _utilTd.cipher = {
       }
     }
   ]
-}
+};
 _utilTd.makeKeyPairFromSeed = {
   valid: [
     {
@@ -217,7 +217,7 @@ _utilTd.makeKeyPairFromSeed = {
   invalid: [
     {
       input: {
-        buffer: util.strToBuffer(seed.invalid.invalidLength1),
+        buffer: util.strToBuffer(seed.invalid.invalidLength1)
       },
       validate: (output) => {
         errorMsg = 'bad seed size'
@@ -226,7 +226,7 @@ _utilTd.makeKeyPairFromSeed = {
     },
     {
       input: {
-        buffer: util.strToBuffer(seed.invalid.invalidLength2),
+        buffer: util.strToBuffer(seed.invalid.invalidLength2)
       },
       validate: (output) => {
         errorMsg = 'bad seed size'
@@ -329,7 +329,7 @@ _utilTd.sizeGenerateSalt = {
       }
     }
   ]
-}
+};
 _utilTd.sizeGenerateIv = {
   valid: [
     {
@@ -403,10 +403,10 @@ _utilTd.sizeGenerateIv = {
           errorMsg = 'Invalid typed array length: -1';
         }
         expect(output.message).to.equal(errorMsg);
-      },
+      }
     }
   ]
-}
+};
 
 if (typeof window !== 'undefined' && typeof window._utilTd === 'undefined') {
   window._utilTd = _utilTd;

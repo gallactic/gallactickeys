@@ -1,7 +1,6 @@
 'use strict'
 
 var expect = typeof window !== 'undefined' ? window.expect : require('chai').expect;
-
 var errorMsg;
 const _gcTd = {};
 
@@ -142,7 +141,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
       }
     },
-    // SBV - should be valid and not returning error /*** Should throw an error message when option.cipher is not provided ***/
+    /*** should be valid and not returning error when option.cipher is not provided ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -169,7 +168,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
       }
     },
-    // SBV - should be valid and not returning error /*** Should throw an error message when option.kdfparams object is not provided ***/
+    //*** should be valid and not returning error  when option.kdfparams object is not provided ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -189,7 +188,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
       }
     },
-    // SBV - should be valid and not returning error /*** Should throw an error message when option.kdfparams.c is not provided ***/
+    //*** should be valid and not returning error when option.kdfparams.c is not provided ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -214,7 +213,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
       }
     },
-    // SBV - should be valid and not returning error /*** Should throw an error message when option.kdfparams.dklen is not provided ***/
+    // SBV - should be valid and not returning error when option.kdfparams.dklen is not provided ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -249,7 +248,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV - should be valid and not returning error /*** Should throw an error message when option.kdfparams.prf is not provided ***/
+    // SBV - should be valid and not returning error when option.kdfparams.prf is not provided ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -284,7 +283,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV - should be valid and not returning error /*** Should throw an error message when salt is undefined ***/
+    // SBV - should be valid and not returning error when salt is undefined ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -317,7 +316,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV - should be valid and not returning error /*** Should throw an error message when salt is empty ***/
+    // SBV - should be valid and not returning error when salt is empty ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -350,7 +349,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV /*** Should throw an error message when iv is undefined ***/
+    // SBV when iv is undefined ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -383,7 +382,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV /*** Should throw an error message when iv is empty ***/
+    // SBV when iv is empty ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -416,7 +415,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV - by default, libary will take default value /*** Should throw an error message when option object is empty ***/
+    // SBV - by default, libary will take default value  when option object is empty ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -441,7 +440,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV /*** Should throw an error message when option.kdf is undefined ***/
+    // SBV  when option.kdf is undefined ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -478,7 +477,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV /*** Should throw an error message when option.kdf is empty ***/
+    // SBV  when option.kdf is empty ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -515,7 +514,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV /*** Should throw an error message when option.cipher is undefined ***/
+    // SBV  when option.cipher is undefined ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -551,7 +550,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV /*** Should throw an error message when option.cipher is empty ***/
+    // SBV  when option.cipher is empty ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -587,7 +586,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV /*** Should throw an error message when option.kdfparams object is empty ***/
+    // SBV  when option.kdfparams object is empty ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -617,7 +616,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV /*** Should throw an error message when option.kdfparams.c is undefined ***/
+    // SBV  when option.kdfparams.c is undefined ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -652,7 +651,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV /*** Should throw an error message when option.kdfparams.c is null ***/
+    // SBV  when option.kdfparams.c is null ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -687,7 +686,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV /*** Should throw an error message when option.kdfparams.dklen is undefined ***/
+    // SBV  when option.kdfparams.dklen is undefined ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -721,7 +720,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV /*** Should throw an error message when option.kdfparams.dklen is null ***/
+    // SBV  when option.kdfparams.dklen is null ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -755,7 +754,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV /*** Should throw an error message when option.kdfparams.dklen is invalid ***/
+    // SBV  when option.kdfparams.dklen is invalid ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -790,7 +789,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV /*** Should throw an error message when option.kdfparams.prf is undefined ***/
+    // SBV  when option.kdfparams.prf is undefined ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -827,7 +826,7 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.salt.length).to.equal(64);
       }
     },
-    // SBV /*** Should throw an error message when option.kdfparams.prf is empty ***/
+    // SBV  when option.kdfparams.prf is empty ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -853,6 +852,349 @@ _gcTd.export = {
         expect(output.crypto.kdfparams.c).to.equal(262144);
         expect(output.crypto.kdfparams.dklen).to.equal(32);
         expect(output.crypto.kdfparams.prf).to.equal('hmac-sha256');
+        expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
+
+        expect(output.address.length).to.equal(35);
+        expect(output.crypto.cipher.length).to.equal(11);
+        expect(output.crypto.ciphertext.length).to.equal(128);
+        expect(output.crypto.cipherparams.iv.length).to.equal(32);
+        expect(output.crypto.mac.length).to.equal(64);
+        expect(output.crypto.kdf.length).to.equal(6);
+        expect(output.crypto.kdfparams.salt.length).to.equal(64);
+      }
+    },
+    // SBV when option.kdf type is scrypt
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'scrypt',
+          cipher: 'aes-128-ctr'
+        }
+      },
+      validate: (output) => {
+        expect(output.crypto.cipher).to.equal('aes-128-ctr');
+        expect(output.crypto.ciphertext).to.equal('88a04d902ed71b443740490a088ce29cd391ce774fa8eff3c1a0ffb23cf6997e9f241426f65d2a5ec039a2c71329c073102f7b65f986ae9e30af46de566de5bc');
+        expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
+        expect(output.crypto.mac).to.equal('1fff2ea2dae35bf309bdf78099116bcc746bf9bcbe803a2bdbdadc77a36f2b53');
+        expect(output.crypto.kdf).to.equal('scrypt');
+        // expect(output.crypto.kdfparams.n).to.equal(constant.crypto.kdf.scrypt.n);
+        // expect(output.crypto.kdfparams.r).to.equal(constant.crypto.kdf.scrypt.r);
+        // expect(output.crypto.kdfparams.p).to.equal(constant.crypto.kdf.scrypt.p);
+        // expect(output.crypto.kdfparams.dklen).to.equal(constant.crypto.kdf.scrypt.dklen);
+        expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
+
+        expect(output.address.length).to.equal(35);
+        expect(output.crypto.cipher.length).to.equal(11);
+        expect(output.crypto.ciphertext.length).to.equal(128);
+        expect(output.crypto.cipherparams.iv.length).to.equal(32);
+        expect(output.crypto.mac.length).to.equal(64);
+        expect(output.crypto.kdf.length).to.equal(6);
+        expect(output.crypto.kdfparams.salt.length).to.equal(64);
+      }
+    },
+    // SBV  when option.kdfparams.n is undefined ***/
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'scrypt',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            n: undefined
+          }
+        }
+      },
+      validate: (output) => {
+        expect(output.crypto.cipher).to.equal('aes-128-ctr');
+        expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
+        expect(output.crypto.kdf).to.equal('scrypt');
+        // expect(output.crypto.kdfparams.n).to.equal(constant.crypto.kdf.scrypt.n);
+        // expect(output.crypto.kdfparams.r).to.equal(constant.crypto.kdf.scrypt.r);
+        // expect(output.crypto.kdfparams.p).to.equal(constant.crypto.kdf.scrypt.p);
+        // expect(output.crypto.kdfparams.dklen).to.equal(constant.crypto.kdf.scrypt.dklen);
+        expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
+
+        expect(output.address.length).to.equal(35);
+        expect(output.crypto.cipher.length).to.equal(11);
+        expect(output.crypto.ciphertext.length).to.equal(128);
+        expect(output.crypto.cipherparams.iv.length).to.equal(32);
+        expect(output.crypto.mac.length).to.equal(64);
+        expect(output.crypto.kdf.length).to.equal(6);
+        expect(output.crypto.kdfparams.salt.length).to.equal(64);
+      }
+    },
+    // SBV  when option.kdfparams.n is null ***/
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'scrypt',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            n: null
+          }
+        }
+      },
+      validate: (output) => {
+        expect(output.crypto.cipher).to.equal('aes-128-ctr');
+        expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
+        expect(output.crypto.kdf).to.equal('scrypt');
+        // expect(output.crypto.kdfparams.n).to.equal(constant.crypto.kdf.scrypt.n);
+        // expect(output.crypto.kdfparams.r).to.equal(constant.crypto.kdf.scrypt.r);
+        // expect(output.crypto.kdfparams.p).to.equal(constant.crypto.kdf.scrypt.p);
+        // expect(output.crypto.kdfparams.dklen).to.equal(constant.crypto.kdf.scrypt.dklen);
+        expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
+
+        expect(output.address.length).to.equal(35);
+        expect(output.crypto.cipher.length).to.equal(11);
+        expect(output.crypto.ciphertext.length).to.equal(128);
+        expect(output.crypto.cipherparams.iv.length).to.equal(32);
+        expect(output.crypto.mac.length).to.equal(64);
+        expect(output.crypto.kdf.length).to.equal(6);
+        expect(output.crypto.kdfparams.salt.length).to.equal(64);
+      }
+    },
+    // SBV  when option.kdfparams.r is undefined ***/
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'scrypt',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            r: undefined
+          }
+        }
+      },
+      validate: (output) => {
+        expect(output.crypto.cipher).to.equal('aes-128-ctr');
+        expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
+        expect(output.crypto.kdf).to.equal('scrypt');
+        // expect(output.crypto.kdfparams.n).to.equal(constant.crypto.kdf.scrypt.n);
+        // expect(output.crypto.kdfparams.r).to.equal(constant.crypto.kdf.scrypt.r);
+        // expect(output.crypto.kdfparams.p).to.equal(constant.crypto.kdf.scrypt.p);
+        // expect(output.crypto.kdfparams.dklen).to.equal(constant.crypto.kdf.scrypt.dklen);
+        expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
+
+        expect(output.address.length).to.equal(35);
+        expect(output.crypto.cipher.length).to.equal(11);
+        expect(output.crypto.ciphertext.length).to.equal(128);
+        expect(output.crypto.cipherparams.iv.length).to.equal(32);
+        expect(output.crypto.mac.length).to.equal(64);
+        expect(output.crypto.kdf.length).to.equal(6);
+        expect(output.crypto.kdfparams.salt.length).to.equal(64);
+      }
+    },
+    // SBV  when option.kdfparams.r is null ***/
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'scrypt',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            r: null
+          }
+        }
+      },
+      validate: (output) => {
+        expect(output.crypto.cipher).to.equal('aes-128-ctr');
+        expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
+        expect(output.crypto.kdf).to.equal('scrypt');
+        // expect(output.crypto.kdfparams.n).to.equal(constant.crypto.kdf.scrypt.n);
+        // expect(output.crypto.kdfparams.r).to.equal(constant.crypto.kdf.scrypt.r);
+        // expect(output.crypto.kdfparams.p).to.equal(constant.crypto.kdf.scrypt.p);
+        // expect(output.crypto.kdfparams.dklen).to.equal(constant.crypto.kdf.scrypt.dklen);
+        expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
+
+        expect(output.address.length).to.equal(35);
+        expect(output.crypto.cipher.length).to.equal(11);
+        expect(output.crypto.ciphertext.length).to.equal(128);
+        expect(output.crypto.cipherparams.iv.length).to.equal(32);
+        expect(output.crypto.mac.length).to.equal(64);
+        expect(output.crypto.kdf.length).to.equal(6);
+        expect(output.crypto.kdfparams.salt.length).to.equal(64);
+      }
+    },
+    // SBV  when option.kdfparams.dklen is undefined ***/
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'scrypt',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            dklen: undefined
+          }
+        }
+      },
+      validate: (output) => {
+        expect(output.crypto.cipher).to.equal('aes-128-ctr');
+        expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
+        expect(output.crypto.kdf).to.equal('scrypt');
+        // expect(output.crypto.kdfparams.n).to.equal(constant.crypto.kdf.scrypt.n);
+        // expect(output.crypto.kdfparams.r).to.equal(constant.crypto.kdf.scrypt.r);
+        // expect(output.crypto.kdfparams.p).to.equal(constant.crypto.kdf.scrypt.p);
+        // expect(output.crypto.kdfparams.dklen).to.equal(constant.crypto.kdf.scrypt.dklen);
+        expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
+
+        expect(output.address.length).to.equal(35);
+        expect(output.crypto.cipher.length).to.equal(11);
+        expect(output.crypto.ciphertext.length).to.equal(128);
+        expect(output.crypto.cipherparams.iv.length).to.equal(32);
+        expect(output.crypto.mac.length).to.equal(64);
+        expect(output.crypto.kdf.length).to.equal(6);
+        expect(output.crypto.kdfparams.salt.length).to.equal(64);
+      }
+    },
+    // SBV  when option.kdfparams.dklen is null ***/
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'scrypt',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            dklen: null
+          }
+        }
+      },
+      validate: (output) => {
+        expect(output.crypto.cipher).to.equal('aes-128-ctr');
+        expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
+        expect(output.crypto.kdf).to.equal('scrypt');
+        // expect(output.crypto.kdfparams.n).to.equal(constant.crypto.kdf.scrypt.n);
+        // expect(output.crypto.kdfparams.r).to.equal(constant.crypto.kdf.scrypt.r);
+        // expect(output.crypto.kdfparams.p).to.equal(constant.crypto.kdf.scrypt.p);
+        // expect(output.crypto.kdfparams.dklen).to.equal(constant.crypto.kdf.scrypt.dklen);
+        expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
+
+        expect(output.address.length).to.equal(35);
+        expect(output.crypto.cipher.length).to.equal(11);
+        expect(output.crypto.ciphertext.length).to.equal(128);
+        expect(output.crypto.cipherparams.iv.length).to.equal(32);
+        expect(output.crypto.mac.length).to.equal(64);
+        expect(output.crypto.kdf.length).to.equal(6);
+        expect(output.crypto.kdfparams.salt.length).to.equal(64);
+      }
+    },
+    // SBV  when option.kdfparams.dklen is invalid ***/
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'scrypt',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            dklen: 33
+          }
+        }
+      },
+      validate: (output) => {
+        expect(output.crypto.cipher).to.equal('aes-128-ctr');
+        expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
+        expect(output.crypto.kdf).to.equal('scrypt');
+        // expect(output.crypto.kdfparams.n).to.equal(constant.crypto.kdf.scrypt.n);
+        // expect(output.crypto.kdfparams.r).to.equal(constant.crypto.kdf.scrypt.r);
+        // expect(output.crypto.kdfparams.p).to.equal(constant.crypto.kdf.scrypt.p);
+        expect(output.crypto.kdfparams.dklen).to.equal(33);
+        expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
+
+        expect(output.address.length).to.equal(35);
+        expect(output.crypto.cipher.length).to.equal(11);
+        expect(output.crypto.ciphertext.length).to.equal(128);
+        expect(output.crypto.cipherparams.iv.length).to.equal(32);
+        expect(output.crypto.mac.length).to.equal(64);
+        expect(output.crypto.kdf.length).to.equal(6);
+        expect(output.crypto.kdfparams.salt.length).to.equal(64);
+      }
+    },
+    // SBV  when option.kdfparams.p is undefined ***/
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'scrypt',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            p: undefined
+          }
+        }
+      },
+      validate: (output) => {
+        expect(output.crypto.cipher).to.equal('aes-128-ctr');
+        expect(output.crypto.ciphertext).to.equal('88a04d902ed71b443740490a088ce29cd391ce774fa8eff3c1a0ffb23cf6997e9f241426f65d2a5ec039a2c71329c073102f7b65f986ae9e30af46de566de5bc');
+        expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
+        expect(output.crypto.mac).to.equal('1fff2ea2dae35bf309bdf78099116bcc746bf9bcbe803a2bdbdadc77a36f2b53');
+        expect(output.crypto.kdf).to.equal('scrypt');
+        // expect(output.crypto.kdfparams.n).to.equal(constant.crypto.kdf.scrypt.n);
+        // expect(output.crypto.kdfparams.r).to.equal(constant.crypto.kdf.scrypt.r);
+        // expect(output.crypto.kdfparams.p).to.equal(constant.crypto.kdf.scrypt.p);
+        // expect(output.crypto.kdfparams.dklen).to.equal(constant.crypto.kdf.scrypt.dklen);
+        expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
+
+        expect(output.address.length).to.equal(35);
+        expect(output.crypto.cipher.length).to.equal(11);
+        expect(output.crypto.ciphertext.length).to.equal(128);
+        expect(output.crypto.cipherparams.iv.length).to.equal(32);
+        expect(output.crypto.mac.length).to.equal(64);
+        expect(output.crypto.kdf.length).to.equal(6);
+        expect(output.crypto.kdfparams.salt.length).to.equal(64);
+      }
+    },
+    // SBV  when option.kdfparams.p is null ***/
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'scrypt',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            prf: null
+          }
+        }
+      },
+      validate: (output) => {
+        expect(output.crypto.cipher).to.equal('aes-128-ctr');
+        expect(output.crypto.ciphertext).to.equal('88a04d902ed71b443740490a088ce29cd391ce774fa8eff3c1a0ffb23cf6997e9f241426f65d2a5ec039a2c71329c073102f7b65f986ae9e30af46de566de5bc');
+        expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
+        expect(output.crypto.mac).to.equal('1fff2ea2dae35bf309bdf78099116bcc746bf9bcbe803a2bdbdadc77a36f2b53');
+        expect(output.crypto.kdf).to.equal('scrypt');
+        // expect(output.crypto.kdfparams.n).to.equal(constant.crypto.kdf.scrypt.n);
+        // expect(output.crypto.kdfparams.r).to.equal(constant.crypto.kdf.scrypt.r);
+        // expect(output.crypto.kdfparams.p).to.equal(constant.crypto.kdf.scrypt.p);
+        // expect(output.crypto.kdfparams.dklen).to.equal(constant.crypto.kdf.scrypt.dklen);
         expect(output.crypto.kdfparams.salt).to.equal('ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd');
 
         expect(output.address.length).to.equal(35);
@@ -1210,7 +1552,7 @@ _gcTd.export = {
         }
       },
       validate: (output) => {
-        errorMsg = 'KDF method is not available yet. Please use pbkdf2 for now';
+        errorMsg = 'KDF method is not available yet. Please use pbkdf2 or scrypt for now';
         expect(output.message).to.equal(errorMsg);
       }
     },
@@ -1236,7 +1578,7 @@ _gcTd.export = {
         expect(output.message).to.equal(errorMsg);
       }
     },
-    /*** Should throw an error message when option.kdfparams.c is invalid ***/
+    /*** Should throw an error message when option.kdfparams.n is invalid ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -1244,21 +1586,19 @@ _gcTd.export = {
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
-          kdf: 'pbkdf2',
+          kdf: 'scrypt',
           cipher: 'aes-128-ctr',
           kdfparams: {
-            c: 'zzzzz',
-            dklen: 32,
-            prf: 'hmac-sha256'
+            n: 'invalid'
           }
         }
       },
       validate: (output) => {
-        errorMsg = 'Iterations not a number';
+        errorMsg = 'Kdf params (n, r, p and dklen) must be a number type';
         expect(output.message).to.equal(errorMsg);
       }
     },
-    /*** Should throw an error message when option.kdfparams.prf is invalid ***/
+    /*** Should throw an error message when option.kdfparams.r is invalid ***/
     {
       input: {
         password: 'gallaaaaaactic',
@@ -1266,12 +1606,50 @@ _gcTd.export = {
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
-          kdf: 'pbkdf2',
+          kdf: 'scrypt',
           cipher: 'aes-128-ctr',
           kdfparams: {
-            c: 262144,
-            dklen: 32,
-            prf: 'invalid'
+            r: 'invalid'
+          }
+        }
+      },
+      validate: (output) => {
+        errorMsg = 'Kdf params (n, r, p and dklen) must be a number type';
+        expect(output.message).to.equal(errorMsg);
+      }
+    },
+    /*** Should throw an error message when option.kdfparams.p is invalid ***/
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'scrypt',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            p: 'invalid'
+          }
+        }
+      },
+      validate: (output) => {
+        errorMsg = 'Kdf params (n, r, p and dklen) must be a number type';
+        expect(output.message).to.equal(errorMsg);
+      }
+    },
+    /*** Should throw an error message when option.kdfparams.dklen is invalid ***/
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'scrypt',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            dklen: 'invalid'
           }
         }
       },
@@ -1279,7 +1657,7 @@ _gcTd.export = {
         // NOTE: exception for nodejs, as it will throw an error. But in browser
         //       it will not throw an error.
         if (typeof window === 'undefined') {
-          errorMsg = 'Bad digest name';
+          errorMsg = 'Kdf params (n, r, p and dklen) must be a number type';
           expect(output.message).to.equal(errorMsg);
         }
       }
@@ -2372,7 +2750,7 @@ _gcTd.recover = {
         }
       },
       validate: (output) => {
-        errorMsg = 'KDF method is not available yet. Please use pbkdf2 for now';
+        errorMsg = 'KDF method is not available yet. Please use pbkdf2 or scrypt for now';
         expect(output.message).to.equal(errorMsg);
       }
     },
