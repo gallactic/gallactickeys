@@ -35,11 +35,6 @@ describe('GallacticKeys - utils - util', function () {
       .to.equal(true);
   });
 
-  it('"isAddress" should return true given 008AEEDA4D805471DF9B2A5B0F38A0C3BCBA786B', function () {
-    expect(util.isAddress('008AEEDA4D805471DF9B2A5B0F38A0C3BCBA786B'))
-      .to.equal(true);
-  });
-
   it('"isSeedHash" should return true given 8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D', function () {
     expect(util.isSeedHash('8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D'))
       .to.equal(true);
