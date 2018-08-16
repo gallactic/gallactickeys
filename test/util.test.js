@@ -365,6 +365,18 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done);
   });
 
+  it('"isAddress" should throw an error based on given invalid address', function(done) {
+    const test = {
+      function: (input) => {
+        try { return crypto.isAddress(input.address); }
+        catch (e) { return e; }
+      }
+    };
+
+    test.data = utilTd.isAddress.valid;
+    globalOrWindow.runTest(test, done);
+  });
+
   it('"isTmAddress" should return boolean value based on given address', function(done) {
     const test = {
       function: (input) => {
@@ -376,6 +388,18 @@ describe('GallacticKeys - utils - crypto', function () {
     };
 
     test.data = utilTd.isTmAddress.valid;
+    globalOrWindow.runTest(test, done);
+  });
+
+  it('"isTmAddress" should throw an error based on given invalid tm address', function(done) {
+    const test = {
+      function: (input) => {
+        try { return crypto.isTmAddress(input.address); }
+        catch (e) { return e; }
+      }
+    };
+
+    test.data = utilTd.isTmAddress.invalid;
     globalOrWindow.runTest(test, done);
   });
 
@@ -393,6 +417,18 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done);
   });
 
+  it('"isAcAddress" should throw an error based on given invalid ac address', function(done) {
+    const test = {
+      function: (input) => {
+        try { return crypto.isAcAddress(input.address); }
+        catch (e) { return e; }
+      }
+    };
+
+    test.data = utilTd.isAcAddress.invalid;
+    globalOrWindow.runTest(test, done);
+  });
+
   it('"isVaAddress" should return boolean value based on given address', function(done) {
     const test = {
       function: (input) => {
@@ -404,6 +440,18 @@ describe('GallacticKeys - utils - crypto', function () {
     };
 
     test.data = utilTd.isVaAddress.valid;
+    globalOrWindow.runTest(test, done);
+  });
+
+  it('"isVaAddress" should return false or error based on given invalid va address', function(done) {
+    const test = {
+      function: (input) => {
+        try { return crypto.isVaAddress(input.address); }
+        catch (e) { return e; }
+      }
+    };
+
+    test.data = utilTd.isVaAddress.invalid;
     globalOrWindow.runTest(test, done);
   });
 

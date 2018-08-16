@@ -290,6 +290,48 @@ _utilTd.isAddress = {
         address: 'B26CE3E09C9D1234AD74BFDF57E20DB4F07A56E1'
       }
     }
+  ],
+  invalid: [
+    // random string 40 characters
+    {
+      input: {
+        address: 'somethingelsethathasthirtytofourtycharcs'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Address is not a valid Hex String');
+      }
+    },
+    // random stirng 35 characters
+    {
+      input: {
+        address: 'somethingelsethathasthirtytofourtyc'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Address is not a valid Hex String');
+      }
+    },
+    // modifying "the last character" of a valid ac address
+    {
+      input: {
+        address: 'B26CE3E09C9D1234AD74BFDF57E20DB4F07A56EZ'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Invalid Checksum');
+      }
+    },
+    // modifying "the first 2 characters" of a valid ac address
+    {
+      input: {
+        address: 'vaHx3dYGX9pB7xPFZA58ZMcN4kYEooJMVds'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Invalid Checksum');
+      }
+    }
   ]
 };
 _utilTd.isTmAddress = {
@@ -304,6 +346,58 @@ _utilTd.isTmAddress = {
         address: '6AE5EF855FE4F3771D1B6D6B73E21065ED7670EC'
       }
     }
+  ],
+  invalid: [
+    // random string 40 characters
+    {
+      input: {
+        address: 'somethingelsethathasthirtytofourtycharcs'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Address is not a valid Hex String');
+      }
+    },
+    // random stirng 35 characters
+    {
+      input: {
+        address: 'somethingelsethathasthirtytofourtyc'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Address is not a valid Hex String');
+      }
+    },
+    // modifying "the last character" of a valid tm address
+    {
+      input: {
+        address: 'B26CE3E09C9D1234AD74BFDF57E20DB4F07A56EZ'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Address is not a valid Hex String');
+      }
+    },
+    // a valid ac address
+    {
+      input: {
+        address: 'acHx3dYGX9pB7xPFZA58ZMcN4kYEooJMVds'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Address is not a valid Hex String');
+      }
+    },
+    // modifying "the first 2 characters" of a valid ac address
+    {
+      input: {
+        address: 'vaTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Q8'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Address is not a valid Hex String');
+      }
+    }
   ]
 };
 _utilTd.isAcAddress = {
@@ -313,6 +407,47 @@ _utilTd.isAcAddress = {
         address: 'acHx3dYGX9pB7xPFZA58ZMcN4kYEooJMVds'
       }
     }
+  ],
+  invalid: [
+    // random string 40 characters
+    {
+      input: {
+        address: 'somethingelsethathasthirtytofourtycharcs'
+      },
+      validate: (output) => {
+        expect(output).to.equal(false);
+      }
+    },
+    // random stirng 35 characters
+    {
+      input: {
+        address: 'somethingelsethathasthirtytofourtyc'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Non-base58 character');
+      }
+    },
+    // modifying "the last character" of a valid ac address
+    {
+      input: {
+        address: 'acHx3dYGX9pB7xPFZA58ZMcN4kYEooJMVdd'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Invalid Checksum');
+      }
+    },
+    // modifying "the first 2 characters" of a valid ac address
+    {
+      input: {
+        address: 'vaHx3dYGX9pB7xPFZA58ZMcN4kYEooJMVds'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Invalid Checksum');
+      }
+    }
   ]
 };
 _utilTd.isVaAddress = {
@@ -320,6 +455,47 @@ _utilTd.isVaAddress = {
     {
       input: {
         address: 'vaTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Q8'
+      }
+    }
+  ],
+  invalid: [
+    // random string 40 characters
+    {
+      input: {
+        address: 'somethingelsethathasthirtytofourtycharcs'
+      },
+      validate: (output) => {
+        expect(output).to.equal(false);
+      }
+    },
+    // random stirng 35 characters
+    {
+      input: {
+        address: 'somethingelsethathasthirtytofourtyc'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Non-base58 character');
+      }
+    },
+    // modifying "the last character" of a valid va address
+    {
+      input: {
+        address: 'vaTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Qz'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Invalid Checksum');
+      }
+    },
+    // modifying "the first 2 characters" of a valid va address
+    {
+      input: {
+        address: 'acTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Q8'
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+        expect(output.message).to.equal('Invalid Checksum');
       }
     }
   ]
