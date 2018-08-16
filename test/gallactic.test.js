@@ -36,7 +36,7 @@ globalOrWindow.runTest = function (test, done, count = 0) {
   let res = beforeTest && typeof beforeTest.then === 'function' ?
     beforeTest.then(() => test.function(test.data[count].input)) :
     test.function(test.data[count].input);
-  if (res.then && typeof res.then === 'function') {
+  if (res && typeof res.then === 'function') {
     res
       .then(output => {
         test.validate(output);
@@ -51,7 +51,7 @@ globalOrWindow.runTest = function (test, done, count = 0) {
       });
   } else {
     try {
-      test.validate(res);
+      if (test.validate) test.validate(res);
       if (test.data[count].validate) {
         test.data[count].validate(res);
       }
