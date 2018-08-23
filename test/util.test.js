@@ -171,7 +171,7 @@ describe('GallacticKeys - utils - crypto', function () {
 
   it('"sha3" should return hashed string', function () {
     let seed = 'vendor oxygen nation vacuum promote excess sick weekend task decrease aware neglect'
-    let result = '0eab42de4c3ceb9235fc91acffe746b29c29a8c366b7c60e4e67c466f36a4304c00fa9caf9d87976ba469bcbe06713b435f091ef2769fb160cdab33d3670680e';
+    let result = '208d7854b1762af8e0788481bd284075adb424bb92b636143fbafeba7d9baa02631226c2b09fb76c182f63ad82841394513fbd15d882a84b9889ac8aad8956ca';
     expect(crypto.sha3(seed)).to.equal(result);
   });
 
