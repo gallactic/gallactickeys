@@ -17,7 +17,34 @@ const seed = {
 };
 
 const _utilTd = {};
+
+_utilTd.toBuffer = {
+  valid: [
+    {
+      input: { value: 20 }
+    },
+    {
+      input: { value: '20' }
+    },
+    {
+      input: { value: null }
+    },
+    {
+      input: { value: undefined }
+    }
+  ],
+  invalid: [
+    {
+      input: { value: new ArrayBuffer() }
+    },
+    {
+      input: { value: new Uint8Array() }
+    }
+  ]
+}
+
 _utilTd.seed = seed;
+
 _utilTd.deriveKey = {
   valid: [
     {
@@ -55,6 +82,7 @@ _utilTd.deriveKey = {
     }
   ]
 };
+
 _utilTd.seedHash = {
   valid: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9',
   invalid: [
@@ -92,6 +120,7 @@ _utilTd.seedHash = {
     }
   ]
 };
+
 _utilTd.keys = {
   publicKey: {
     valid: 'BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
@@ -168,6 +197,7 @@ _utilTd.keys = {
     ]
   }
 };
+
 _utilTd.decodeAddress = {
   valid: [
     {
@@ -188,6 +218,7 @@ _utilTd.decodeAddress = {
     }
   ]
 };
+
 _utilTd.cipher = {
   valid: 'aes-128-ctr',
   invalid: [
@@ -221,6 +252,7 @@ _utilTd.cipher = {
     }
   ]
 };
+
 _utilTd.makeKeyPairFromSeed = {
   valid: [
     {
@@ -273,6 +305,7 @@ _utilTd.makeKeyPairFromSeed = {
     }
   ]
 };
+
 _utilTd.isAddress = {
   valid: [
     {
@@ -334,6 +367,7 @@ _utilTd.isAddress = {
     }
   ]
 };
+
 _utilTd.isTmAddress = {
   valid: [
     {
@@ -400,6 +434,7 @@ _utilTd.isTmAddress = {
     }
   ]
 };
+
 _utilTd.isAcAddress = {
   valid: [
     {
@@ -450,6 +485,8 @@ _utilTd.isAcAddress = {
     }
   ]
 };
+
+
 _utilTd.isVaAddress = {
   valid: [
     {
@@ -500,6 +537,7 @@ _utilTd.isVaAddress = {
     }
   ]
 };
+
 _utilTd.sizeGenerateSalt = {
   valid: [
     {
@@ -577,6 +615,7 @@ _utilTd.sizeGenerateSalt = {
     }
   ]
 };
+
 _utilTd.sizeGenerateIv = {
   valid: [
     {

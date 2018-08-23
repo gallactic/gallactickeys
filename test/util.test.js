@@ -5,59 +5,127 @@ var expect = typeof window !== 'undefined' ? window.expect : require('chai').exp
 var globalOrWindow = (typeof window !== 'undefined' ? window : global);
 var utilTd = (typeof window !== 'undefined' ? window : require('./util.td'))._utilTd;
 
-describe('GallacticKeys - utils', function () {
-  it('should have util object', function () {
+describe('GallacticKeys - utils', () => {
+  it('should have util object', () => {
     expect(gallactickeys.utils.util).to.be.an('object');
   });
 
-  it('should have crypto object', function () {
+  it('should have crypto object', () => {
     expect(gallactickeys.utils.crypto).to.be.an('object');
   });
 
-  it('should have util object', function () {
+  it('should have util object', () => {
     expect(gallactickeys.utils.mnemonic).to.be.an('object');
   });
 });
 
-describe('GallacticKeys - utils - util', function () {
+describe('GallacticKeys - utils - util', () => {
   const util = gallactickeys.utils.util;
 
-  it('"isHexString" should return true given 008AEEDA4D805471DF9B2A5B0F38A0C3BCBA786B', function () {
+  it('"isHexString" should return true given 008AEEDA4D805471DF9B2A5B0F38A0C3BCBA786B', () => {
     expect(util.isHexString('008AEEDA4D805471DF9B2A5B0F38A0C3BCBA786B')).to.equal(true);
   });
 
-  it('"isPublicKey" should return true given 774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08', function () {
+  it('"isPublicKey" should return true given 774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08', () => {
     expect(util.isPublicKey('774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08')).to.equal(true);
   });
 
-  it('"isPrivateKey" should return true given 8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08', function () {
+  it('"isPrivateKey" should return true given 8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08', () => {
     expect(util.isPrivateKey('8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08'))
       .to.equal(true);
   });
 
-  it('"isSeedHash" should return true given 8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D', function () {
+  it('"isSeedHash" should return true given 8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D', () => {
     expect(util.isSeedHash('8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D'))
       .to.equal(true);
   });
 
-  it('"hexStringToBytes" should return Buffer format given 008AEEDA4D805471DF9B2A5B0F38A0C3BCBA786B', function () {
+  it('"hexStringToBytes" should return Buffer format given 008AEEDA4D805471DF9B2A5B0F38A0C3BCBA786B', () => {
     expect(util.hexStringToBytes('008AEEDA4D805471DF9B2A5B0F38A0C3BCBA786B'))
       .to.be.an('array')
   });
 
-  it('"bytesToHexUpperString" should return Hex String given random bytes', function () {
+  it('"bytesToHexUpperString" should return Hex String given random bytes', () => {
     let hexString = util.bytesToHexUpperString(gallactickeys.utils.crypto.generateIv(10));
     expect(hexString).to.be.a('string');
     expect(util.isHexString(hexString)).to.equal(true);
   });
 
-  it('"strToBuffer" should return buffer given random string', function () {
+  it('"strToBuffer" should return buffer given random string', () => {
     expect(typeof util.strToBuffer('somethinghere')).to.equal('object');
   });
 
-  it('"hexToUtf16le" should return String given 008AEEDA4D805471DF9B2A5B0F38A0C3BCBA786B', function () {
+  it('"hexToUtf16le" should return String given 008AEEDA4D805471DF9B2A5B0F38A0C3BCBA786B', () => {
     expect(util.hexToUtf16le('008AEEDA4D805471DF9B2A5B0F38A0C3BCBA786B'))
       .to.be.a('string');
+  });
+
+  it('"padToEven" should pad odd string length ("something") to have even length', ()=> {
+    expect(util.padToEven('something').length).to.equal(10);
+  });
+
+  it('"intToHex" should convert 210123 into hex string', () => {
+    expect(util.intToHex(210123)).to.equal('0334cb');
+  });
+
+  it('"intToBuffer" should convert 210123 to buffer', () => {
+    expect(util.intToBuffer(210123) instanceof Uint8Array).to.equal(true);
+  });
+
+  it('"toBuffer" should convert values to buffer', (done) => {
+    const test = {
+      function: (input) => {
+        return util.toBuffer(input.value);
+      },
+      validate: (output) => {
+        expect(output instanceof Uint8Array).to.equal(true);
+      }
+    };
+
+    test.data = utilTd.toBuffer.valid;
+
+    globalOrWindow.runTest(test, done);
+  });
+
+  it('"toBuffer" should throw error given invalid input', (done) => {
+    const test = {
+      function: (input) => {
+        try { return util.toBuffer(input.value); }
+        catch (e) { return e; }
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(true);
+      }
+    };
+
+    test.data = utilTd.toBuffer.invalid;
+
+    globalOrWindow.runTest(test, done);
+  });
+
+  it('"isHexPrefixed" should return boolean if string starts with "0x"', () => {
+    expect(util.isHexPrefixed('0xsomething')).to.equal(true);
+  });
+
+  it('"stripHexPrefix" should remove "0x" from a given string', () => {
+    expect(util.stripHexPrefix('0xsomething')).to.equal('something');
+  });
+
+  it('"zeros" should return a buffer with leading 0s', () => {
+    expect(util.zeros(30).toString('hex')).to.equal('000000000000000000000000000000000000000000000000000000000000')
+  });
+
+  it('"stripZeros" should trims leading zeros given input', () => {
+    expect(util.stripZeros('0000000000000000000000000000000000000000000000000000000000000032'))
+      .to.equal('32');
+  });
+
+  it('"setLengthLeft" should pad given value with zeros till it has required length in bytes', () => {
+    expect(util.setLengthLeft('ABCD', 10, false).toString('hex')).to.equal('00000000000041424344');
+  });
+
+  it('"setLengthRight" should pad given value with zeros till it has required length in bytes', () => {
+    expect(util.setLengthLeft('ABCD', 10, true).toString('hex')).to.equal('41424344000000000000');
   });
 });
 
@@ -65,6 +133,8 @@ describe('GallacticKeys - utils - crypto', function () {
   const util = gallactickeys.utils.util;
   const crypto = gallactickeys.utils.crypto;
   it('should have "hashSeed" function', () => expect(crypto.hashSeed).to.be.a('function'));
+  it('should have "hashAddr" function', () => expect(crypto.hashAddr).to.be.a('function'));
+  it('should have "sha3" function', () => expect(crypto.sha3).to.be.a('function'));
   it('should have "makeKeyPair" function', () => expect(crypto.makeKeyPair).to.be.a('function'));
   it('should have "deriveKey" function', () => expect(crypto.deriveKey).to.be.a('function'));
   it('should have "pbkdf2Dk" function', () => expect(crypto.pbkdf2Dk).to.be.a('function'));
@@ -92,6 +162,17 @@ describe('GallacticKeys - utils - crypto', function () {
   it('"hashSeed" should return 32 bytes of hex string given a mnemonic', function () {
     let seed = 'vendor oxygen nation vacuum promote excess sick weekend task decrease aware neglect'
     expect(util.isSeedHash(crypto.hashSeed(seed))).to.equal(true);
+  });
+
+  it('"hashAddr" should return hashed', function () {
+    let seed = 'vendor oxygen nation vacuum promote excess sick weekend task decrease aware neglect'
+    expect(crypto.hashAddr(crypto.hashSeed(seed)) instanceof Uint8Array).to.equal(true);
+  });
+
+  it('"sha3" should return hashed string', function () {
+    let seed = 'vendor oxygen nation vacuum promote excess sick weekend task decrease aware neglect'
+    let result = '0eab42de4c3ceb9235fc91acffe746b29c29a8c366b7c60e4e67c466f36a4304c00fa9caf9d87976ba469bcbe06713b435f091ef2769fb160cdab33d3670680e';
+    expect(crypto.sha3(seed)).to.equal(result);
   });
 
   it('"makeKeyPair" should return a key pair object given a seed hash', function () {
@@ -129,10 +210,11 @@ describe('GallacticKeys - utils - crypto', function () {
         return crypto.deriveKey(input.password, input.salt, input.option);
       },
       validate: (output) => {
-        if (typeof process !== undefined) {
+        if (typeof window !== undefined) {
+          expect(typeof output).to.equal('object');
+        } else {
           expect(Buffer.isBuffer(output)).to.equal(true)
         }
-        expect(typeof output).to.equal('object');
       }
     };
 

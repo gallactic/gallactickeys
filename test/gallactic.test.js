@@ -152,18 +152,18 @@ describe('GallacticKeys', function () {
         expect(output.crypto.kdfparams).to.be.an('object');
         expect(output.crypto.kdfparams.dklen).to.be.a('number');
         expect(output.crypto.kdfparams.salt).to.be.a('string');
-        expect(output.crypto.kdfparams).to.exist.and.be.an('object');
+        expect(output.crypto.kdfparams).to.be.an('object');
         if (output.crypto.kdf==='pbkdf2'){
-          expect(output.crypto.kdfparams.c).to.exist.and.be.a('number');
-          expect(output.crypto.kdfparams.prf).to.exist.and.be.a('string');
+          expect(output.crypto.kdfparams.c).to.be.a('number');
+          expect(output.crypto.kdfparams.prf).to.be.a('string');
         }
         else if (output.crypto.kdf==='scrypt'){
-          expect(output.crypto.kdfparams.n).to.exist.and.be.a('number');
-          expect(output.crypto.kdfparams.r).to.exist.and.be.a('number');
-          expect(output.crypto.kdfparams.p).to.exist.and.be.a('number');
+          expect(output.crypto.kdfparams.n).to.be.a('number');
+          expect(output.crypto.kdfparams.r).to.be.a('number');
+          expect(output.crypto.kdfparams.p).to.be.a('number');
         }
-        expect(output.crypto.kdfparams.dklen).to.exist.and.be.a('number');
-        expect(output.crypto.kdfparams.salt).to.exist.and.be.a('string');
+        expect(output.crypto.kdfparams.dklen).to.be.a('number');
+        expect(output.crypto.kdfparams.salt).to.be.a('string');
       }
     };
     test.data = igcTd.export.valid;
