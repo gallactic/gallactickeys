@@ -58,7 +58,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -73,9 +73,9 @@ _gcTd.export = {
       },
       validate: (output) => {
         expect(output.crypto.cipher).to.equal('aes-128-ctr');
-        expect(output.crypto.ciphertext).to.equal('42bd22c6d3310e5d62ada2c44ef9b7634a85984ef4404be3af881eb9e6ad5847745b14d4d59a61324f3177e5ff9c33c2cd538a8cc084950eed1c2b341867892d');
+        expect(output.crypto.ciphertext).to.equal('b745bbf018340f227a6855b094462a0d1f133e024ff96c317da1798e98524a61363aebd118ad4f4fde6acb753874343de0ad9506556f19ad5fcca638ea89c76c');
         expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
-        expect(output.crypto.mac).to.equal('82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe');
+        expect(output.crypto.mac).to.equal('27595c4955bc1d5fe7cab1c5446dc37205d7f56d94193083c58333890375a75a');
         expect(output.crypto.kdf).to.equal('pbkdf2');
         expect(output.crypto.kdfparams.c).to.equal(262144);
         expect(output.crypto.kdfparams.dklen).to.equal(32);
@@ -84,7 +84,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -95,7 +94,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
           kdf: 'pbkdf2',
@@ -120,7 +119,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         option: {
           kdf: 'pbkdf2',
@@ -145,7 +144,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -158,9 +157,9 @@ _gcTd.export = {
         }
       },
       validate: (output) => {
-        expect(output.crypto.ciphertext).to.equal('42bd22c6d3310e5d62ada2c44ef9b7634a85984ef4404be3af881eb9e6ad5847745b14d4d59a61324f3177e5ff9c33c2cd538a8cc084950eed1c2b341867892d');
+        expect(output.crypto.ciphertext).to.equal('b745bbf018340f227a6855b094462a0d1f133e024ff96c317da1798e98524a61363aebd118ad4f4fde6acb753874343de0ad9506556f19ad5fcca638ea89c76c');
         expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
-        expect(output.crypto.mac).to.equal('82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe');
+        expect(output.crypto.mac).to.equal('27595c4955bc1d5fe7cab1c5446dc37205d7f56d94193083c58333890375a75a');
         expect(output.crypto.kdf).to.equal('pbkdf2');
         expect(output.crypto.kdfparams.c).to.equal(262144);
         expect(output.crypto.kdfparams.dklen).to.equal(32);
@@ -172,7 +171,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -192,7 +191,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -217,7 +216,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -231,9 +230,9 @@ _gcTd.export = {
       },
       validate: (output) => {
         expect(output.crypto.cipher).to.equal('aes-128-ctr');
-        expect(output.crypto.ciphertext).to.equal('42bd22c6d3310e5d62ada2c44ef9b7634a85984ef4404be3af881eb9e6ad5847745b14d4d59a61324f3177e5ff9c33c2cd538a8cc084950eed1c2b341867892d');
+        expect(output.crypto.ciphertext).to.equal('b745bbf018340f227a6855b094462a0d1f133e024ff96c317da1798e98524a61363aebd118ad4f4fde6acb753874343de0ad9506556f19ad5fcca638ea89c76c');
         expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
-        expect(output.crypto.mac).to.equal('82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe');
+        expect(output.crypto.mac).to.equal('27595c4955bc1d5fe7cab1c5446dc37205d7f56d94193083c58333890375a75a');
         expect(output.crypto.kdf).to.equal('pbkdf2');
         expect(output.crypto.kdfparams.c).to.equal(262144);
         expect(output.crypto.kdfparams.prf).to.equal('hmac-sha256');
@@ -241,7 +240,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -252,7 +250,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -266,9 +264,9 @@ _gcTd.export = {
       },
       validate: (output) => {
         expect(output.crypto.cipher).to.equal('aes-128-ctr');
-        expect(output.crypto.ciphertext).to.equal('42bd22c6d3310e5d62ada2c44ef9b7634a85984ef4404be3af881eb9e6ad5847745b14d4d59a61324f3177e5ff9c33c2cd538a8cc084950eed1c2b341867892d');
+        expect(output.crypto.ciphertext).to.equal('b745bbf018340f227a6855b094462a0d1f133e024ff96c317da1798e98524a61363aebd118ad4f4fde6acb753874343de0ad9506556f19ad5fcca638ea89c76c');
         expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
-        expect(output.crypto.mac).to.equal('82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe');
+        expect(output.crypto.mac).to.equal('27595c4955bc1d5fe7cab1c5446dc37205d7f56d94193083c58333890375a75a');
         expect(output.crypto.kdf).to.equal('pbkdf2');
         expect(output.crypto.kdfparams.c).to.equal(262144);
         expect(output.crypto.kdfparams.prf).to.equal('hmac-sha256');
@@ -276,7 +274,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -287,7 +284,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: undefined,
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -309,7 +306,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -320,7 +316,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: '',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -342,7 +338,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -353,7 +348,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: undefined,
         option: {
@@ -375,7 +370,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -386,7 +380,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: '',
         option: {
@@ -408,7 +402,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -419,7 +412,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {}
@@ -433,7 +426,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -444,7 +436,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -459,9 +451,9 @@ _gcTd.export = {
       },
       validate: (output) => {
         expect(output.crypto.cipher).to.equal('aes-128-ctr');
-        expect(output.crypto.ciphertext).to.equal('42bd22c6d3310e5d62ada2c44ef9b7634a85984ef4404be3af881eb9e6ad5847745b14d4d59a61324f3177e5ff9c33c2cd538a8cc084950eed1c2b341867892d');
+        expect(output.crypto.ciphertext).to.equal('b745bbf018340f227a6855b094462a0d1f133e024ff96c317da1798e98524a61363aebd118ad4f4fde6acb753874343de0ad9506556f19ad5fcca638ea89c76c');
         expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
-        expect(output.crypto.mac).to.equal('82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe');
+        expect(output.crypto.mac).to.equal('27595c4955bc1d5fe7cab1c5446dc37205d7f56d94193083c58333890375a75a');
         expect(output.crypto.kdf).to.equal('pbkdf2');
         expect(output.crypto.kdfparams.c).to.equal(262144);
         expect(output.crypto.kdfparams.dklen).to.equal(32);
@@ -470,7 +462,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -481,7 +472,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -496,9 +487,9 @@ _gcTd.export = {
       },
       validate: (output) => {
         expect(output.crypto.cipher).to.equal('aes-128-ctr');
-        expect(output.crypto.ciphertext).to.equal('42bd22c6d3310e5d62ada2c44ef9b7634a85984ef4404be3af881eb9e6ad5847745b14d4d59a61324f3177e5ff9c33c2cd538a8cc084950eed1c2b341867892d');
+        expect(output.crypto.ciphertext).to.equal('b745bbf018340f227a6855b094462a0d1f133e024ff96c317da1798e98524a61363aebd118ad4f4fde6acb753874343de0ad9506556f19ad5fcca638ea89c76c');
         expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
-        expect(output.crypto.mac).to.equal('82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe');
+        expect(output.crypto.mac).to.equal('27595c4955bc1d5fe7cab1c5446dc37205d7f56d94193083c58333890375a75a');
         expect(output.crypto.kdf).to.equal('pbkdf2');
         expect(output.crypto.kdfparams.c).to.equal(262144);
         expect(output.crypto.kdfparams.dklen).to.equal(32);
@@ -507,7 +498,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -518,7 +508,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -534,7 +524,7 @@ _gcTd.export = {
       validate: (output) => {
         expect(output.crypto.cipher).to.equal('aes-128-ctr');
         expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
-        expect(output.crypto.mac).to.equal('82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe');
+        expect(output.crypto.mac).to.equal('27595c4955bc1d5fe7cab1c5446dc37205d7f56d94193083c58333890375a75a');
         expect(output.crypto.kdf).to.equal('pbkdf2');
         expect(output.crypto.kdfparams.c).to.equal(262144);
         expect(output.crypto.kdfparams.dklen).to.equal(32);
@@ -543,7 +533,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -554,7 +543,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -568,9 +557,9 @@ _gcTd.export = {
         }
       },
       validate: (output) => {
-        expect(output.crypto.ciphertext).to.equal('42bd22c6d3310e5d62ada2c44ef9b7634a85984ef4404be3af881eb9e6ad5847745b14d4d59a61324f3177e5ff9c33c2cd538a8cc084950eed1c2b341867892d');
+        expect(output.crypto.ciphertext).to.equal('b745bbf018340f227a6855b094462a0d1f133e024ff96c317da1798e98524a61363aebd118ad4f4fde6acb753874343de0ad9506556f19ad5fcca638ea89c76c');
         expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
-        expect(output.crypto.mac).to.equal('82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe');
+        expect(output.crypto.mac).to.equal('27595c4955bc1d5fe7cab1c5446dc37205d7f56d94193083c58333890375a75a');
         expect(output.crypto.kdf).to.equal('pbkdf2');
         expect(output.crypto.kdfparams.c).to.equal(262144);
         expect(output.crypto.kdfparams.dklen).to.equal(32);
@@ -579,7 +568,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -590,7 +578,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -609,7 +597,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -620,7 +607,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -644,7 +631,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -655,7 +641,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -679,7 +665,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -690,7 +675,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -713,7 +698,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -724,7 +708,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -747,7 +731,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -758,7 +741,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -782,7 +765,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -793,7 +775,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -808,9 +790,9 @@ _gcTd.export = {
       },
       validate: (output) => {
         expect(output.crypto.cipher).to.equal('aes-128-ctr');
-        expect(output.crypto.ciphertext).to.equal('42bd22c6d3310e5d62ada2c44ef9b7634a85984ef4404be3af881eb9e6ad5847745b14d4d59a61324f3177e5ff9c33c2cd538a8cc084950eed1c2b341867892d');
+        expect(output.crypto.ciphertext).to.equal('b745bbf018340f227a6855b094462a0d1f133e024ff96c317da1798e98524a61363aebd118ad4f4fde6acb753874343de0ad9506556f19ad5fcca638ea89c76c');
         expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
-        expect(output.crypto.mac).to.equal('82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe');
+        expect(output.crypto.mac).to.equal('27595c4955bc1d5fe7cab1c5446dc37205d7f56d94193083c58333890375a75a');
         expect(output.crypto.kdf).to.equal('pbkdf2');
         expect(output.crypto.kdfparams.c).to.equal(262144);
         expect(output.crypto.kdfparams.dklen).to.equal(32);
@@ -819,7 +801,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -830,7 +811,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -845,9 +826,9 @@ _gcTd.export = {
       },
       validate: (output) => {
         expect(output.crypto.cipher).to.equal('aes-128-ctr');
-        expect(output.crypto.ciphertext).to.equal('42bd22c6d3310e5d62ada2c44ef9b7634a85984ef4404be3af881eb9e6ad5847745b14d4d59a61324f3177e5ff9c33c2cd538a8cc084950eed1c2b341867892d');
+        expect(output.crypto.ciphertext).to.equal('b745bbf018340f227a6855b094462a0d1f133e024ff96c317da1798e98524a61363aebd118ad4f4fde6acb753874343de0ad9506556f19ad5fcca638ea89c76c');
         expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
-        expect(output.crypto.mac).to.equal('82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe');
+        expect(output.crypto.mac).to.equal('27595c4955bc1d5fe7cab1c5446dc37205d7f56d94193083c58333890375a75a');
         expect(output.crypto.kdf).to.equal('pbkdf2');
         expect(output.crypto.kdfparams.c).to.equal(262144);
         expect(output.crypto.kdfparams.dklen).to.equal(32);
@@ -856,7 +837,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -867,7 +847,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -877,9 +857,9 @@ _gcTd.export = {
       },
       validate: (output) => {
         expect(output.crypto.cipher).to.equal('aes-128-ctr');
-        expect(output.crypto.ciphertext).to.equal('88a04d902ed71b443740490a088ce29cd391ce774fa8eff3c1a0ffb23cf6997e9f241426f65d2a5ec039a2c71329c073102f7b65f986ae9e30af46de566de5bc');
+        expect(output.crypto.ciphertext).to.equal('7d58d4a6e5d21a3b2f85be7ed2337ff28607683bf411c8211389988542098b58dd45eb233b6a042351621e57d4c1c78c3dd164ef6c6d223d827fcbd2a483abfd');
         expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
-        expect(output.crypto.mac).to.equal('1fff2ea2dae35bf309bdf78099116bcc746bf9bcbe803a2bdbdadc77a36f2b53');
+        expect(output.crypto.mac).to.equal('790e5c958dc1a78a5d2e757c8215558e2bb036068f213e2304de4eb3749b074f');
         expect(output.crypto.kdf).to.equal('scrypt');
         // expect(output.crypto.kdfparams.n).to.equal(constant.crypto.kdf.scrypt.n);
         // expect(output.crypto.kdfparams.r).to.equal(constant.crypto.kdf.scrypt.r);
@@ -889,7 +869,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -900,7 +879,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -923,7 +902,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -934,7 +912,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -957,7 +935,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -968,7 +945,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -991,7 +968,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -1002,7 +978,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1025,7 +1001,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -1036,7 +1011,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1059,7 +1034,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -1070,7 +1044,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1093,7 +1067,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -1104,7 +1077,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1127,7 +1100,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -1138,7 +1110,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1151,9 +1123,9 @@ _gcTd.export = {
       },
       validate: (output) => {
         expect(output.crypto.cipher).to.equal('aes-128-ctr');
-        expect(output.crypto.ciphertext).to.equal('88a04d902ed71b443740490a088ce29cd391ce774fa8eff3c1a0ffb23cf6997e9f241426f65d2a5ec039a2c71329c073102f7b65f986ae9e30af46de566de5bc');
+        expect(output.crypto.ciphertext).to.equal('7d58d4a6e5d21a3b2f85be7ed2337ff28607683bf411c8211389988542098b58dd45eb233b6a042351621e57d4c1c78c3dd164ef6c6d223d827fcbd2a483abfd');
         expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
-        expect(output.crypto.mac).to.equal('1fff2ea2dae35bf309bdf78099116bcc746bf9bcbe803a2bdbdadc77a36f2b53');
+        expect(output.crypto.mac).to.equal('790e5c958dc1a78a5d2e757c8215558e2bb036068f213e2304de4eb3749b074f');
         expect(output.crypto.kdf).to.equal('scrypt');
         // expect(output.crypto.kdfparams.n).to.equal(constant.crypto.kdf.scrypt.n);
         // expect(output.crypto.kdfparams.r).to.equal(constant.crypto.kdf.scrypt.r);
@@ -1163,7 +1135,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -1174,7 +1145,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1187,9 +1158,9 @@ _gcTd.export = {
       },
       validate: (output) => {
         expect(output.crypto.cipher).to.equal('aes-128-ctr');
-        expect(output.crypto.ciphertext).to.equal('88a04d902ed71b443740490a088ce29cd391ce774fa8eff3c1a0ffb23cf6997e9f241426f65d2a5ec039a2c71329c073102f7b65f986ae9e30af46de566de5bc');
+        expect(output.crypto.ciphertext).to.equal('7d58d4a6e5d21a3b2f85be7ed2337ff28607683bf411c8211389988542098b58dd45eb233b6a042351621e57d4c1c78c3dd164ef6c6d223d827fcbd2a483abfd');
         expect(output.crypto.cipherparams.iv).to.equal('d32116e6157fde33fa0c7e0e4001e145');
-        expect(output.crypto.mac).to.equal('1fff2ea2dae35bf309bdf78099116bcc746bf9bcbe803a2bdbdadc77a36f2b53');
+        expect(output.crypto.mac).to.equal('790e5c958dc1a78a5d2e757c8215558e2bb036068f213e2304de4eb3749b074f');
         expect(output.crypto.kdf).to.equal('scrypt');
         // expect(output.crypto.kdfparams.n).to.equal(constant.crypto.kdf.scrypt.n);
         // expect(output.crypto.kdfparams.r).to.equal(constant.crypto.kdf.scrypt.r);
@@ -1199,7 +1170,6 @@ _gcTd.export = {
 
         expect(output.address.length).to.equal(35);
         expect(output.crypto.cipher.length).to.equal(11);
-        expect(output.crypto.ciphertext.length).to.equal(128);
         expect(output.crypto.cipherparams.iv.length).to.equal(32);
         expect(output.crypto.mac.length).to.equal(64);
         expect(output.crypto.kdf.length).to.equal(6);
@@ -1219,7 +1189,7 @@ _gcTd.export = {
     /*** Should throw an error message when password is not provided ***/
     {
       input: {
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1258,45 +1228,11 @@ _gcTd.export = {
         expect(output.message).to.equal(errorMsg);
       }
     },
-    // NVTC - /*** Should throw an error message when option object is not provided ***/
-    // {
-    //   input: {
-    //     password: 'gallaaaaaactic',
-    //     privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
-    //     salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
-    //     iv: 'd32116e6157fde33fa0c7e0e4001e145',
-    //   },
-    //   validate: (output) => {
-    //     errorMsg = 'KDF method is not available yet. Please use pbkdf2 for now';
-    //     expect(output.message).to.equal(errorMsg);
-    //   }
-    // },
-    /*** Should throw an error message when option.kdf is not provided ***/
-    // {
-    //   input: {
-    //     password: 'gallaaaaaactic',
-    //     privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
-    //     salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
-    //     iv: 'd32116e6157fde33fa0c7e0e4001e145',
-    //     option: {
-    //       cipher: 'aes-128-ctr',
-    //       kdfparams: {
-    //         c: 262144,
-    //         dklen: 32,
-    //         prf: 'hmac-sha256'
-    //       }
-    //     }
-    //   },
-    //   validate: (output) => {
-    //     errorMsg = 'KDF method is not available yet. Please use pbkdf2 for now';
-    //     expect(output.message).to.equal(errorMsg);
-    //   }
-    // },
     /*** Should throw an error message when password is undefined ***/
     {
       input: {
         password: undefined,
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1318,7 +1254,7 @@ _gcTd.export = {
     {
       input: {
         password: '',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1336,28 +1272,6 @@ _gcTd.export = {
         expect(output.message).to.equal(errorMsg);
       }
     },
-    // NVTC - /*** Should throw an error message when password is invalid ***/
-    // {
-    //   input: {
-    //     password: '1231314',
-    //     privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
-    //     salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
-    //     iv: 'd32116e6157fde33fa0c7e0e4001e145',
-    //     option: {
-    //       kdf: 'pbkdf2',
-    //       cipher: 'aes-128-ctr',
-    //       kdfparams: {
-    //         c: 262144,
-    //         dklen: 32,
-    //         prf: 'hmac-sha256'
-    //       }
-    //     }
-    //   },
-    //   validate: (output) => {
-    //     errorMsg = '@Josef: Please provide appropriate error message';
-    //     expect(output.message).to.equal(errorMsg);
-    //   }
-    // },
     /*** Should throw an error message when private key is undefined ***/
     {
       input: {
@@ -1402,11 +1316,11 @@ _gcTd.export = {
         expect(output.message).to.equal(errorMsg);
       }
     },
-    /*** Should throw an error message when private key is invalid ***/
+    /*** Should throw an error message when tm private key is less than 128 characters and even number characters long ***/
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1FFFF',
+        privateKey: '3c7KSMcq37R81N2pTxGzYej74ftCyKU2GHWXBvWbbTcYBozEyzxkZvwacGw8saNVrQ6jdCGa4CkQXGCnepyzVQ3NpYG4i',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1424,11 +1338,11 @@ _gcTd.export = {
         expect(output.message).to.equal(errorMsg);
       }
     },
-    /*** Should throw an error message when private key is not 128 characters long ***/
+    /*** Should throw an error message when tm private key is less than 128 characters but odd number characters long ***/
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1',
+        privateKey: 'CVxtNv192KKTvbq2VxyazhWqmCd1qaWGaTsJFDBdh6TreiPeiaq5JM5uLhKwkEHtM2xK8kjiu8rapa72VxnYkLhvNxLpq8',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1446,55 +1360,55 @@ _gcTd.export = {
         expect(output.message).to.equal(errorMsg);
       }
     },
-    // NVTC - it is a valid salt /*** Should throw an error message when salt is invalid ***/
-    // {
-    //   input: {
-    //     password: 'gallaaaaaactic',
-    //     privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
-    //     salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0be',
-    //     iv: 'd32116e6157fde33fa0c7e0e4001e145',
-    //     option: {
-    //       kdf: 'pbkdf2',
-    //       cipher: 'aes-128-ctr',
-    //       kdfparams: {
-    //         c: 262144,
-    //         dklen: 32,
-    //         prf: 'hmac-sha256'
-    //       }
-    //     }
-    //   },
-    //   validate: (output) => {
-    //     errorMsg = '@Josef: Please provide appropriate error message';
-    //     expect(output.message).to.equal(errorMsg);
-    //   }
-    // },
-    // NVTC - salt does not necessary 64 bytes /*** Should throw an error message when salt is not 64 characters long ***/
-    // {
-    //   input: {
-    //     password: 'gallaaaaaactic',
-    //     privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
-    //     salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0b',
-    //     iv: 'd32116e6157fde33fa0c7e0e4001e145',
-    //     option: {
-    //       kdf: 'pbkdf2',
-    //       cipher: 'aes-128-ctr',
-    //       kdfparams: {
-    //         c: 262144,
-    //         dklen: 32,
-    //         prf: 'hmac-sha256'
-    //       }
-    //     }
-    //   },
-    //   validate: (output) => {
-    //     errorMsg = '@Josef: Please provide appropriate error message';
-    //     expect(output.message).to.equal(errorMsg);
-    //   }
-    // },
+    /*** Should throw an error message when tm private key is more than 128 characters and even number characters long ***/
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: 'J3ocB1f458QC7RWgVBUSrsyBruDD4xVWayeieuvRUxCSVMgPxXfBDaFC3aasmHbcR4YDP7nz8T3DSLh9ezi5fWwEr1mH9eDpFK',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'pbkdf2',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            c: 262144,
+            dklen: 32,
+            prf: 'hmac-sha256'
+          }
+        }
+      },
+      validate: (output) => {
+        errorMsg = 'given Private Key is not a valid Private Key string';
+        expect(output.message).to.equal(errorMsg);
+      }
+    },
+    /*** Should throw an error message when tm private key is more than 128 characters but odd number characters long ***/
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        privateKey: '4s2Vp8Q83J5oUHRrGuDZbQnMaxnMrqNQvTt95WfPK7cfrULoSGZDHSf78P7KJHSy4BmgWUpaLMrSUVUg7o9rYPBvtS6Tn8h62',
+        salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
+        iv: 'd32116e6157fde33fa0c7e0e4001e145',
+        option: {
+          kdf: 'pbkdf2',
+          cipher: 'aes-128-ctr',
+          kdfparams: {
+            c: 262144,
+            dklen: 32,
+            prf: 'hmac-sha256'
+          }
+        }
+      },
+      validate: (output) => {
+        errorMsg = 'given Private Key is not a valid Private Key string';
+        expect(output.message).to.equal(errorMsg);
+      }
+    },
     /*** Should throw an error message when iv has invalid length***/
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e1zz',
         option: {
@@ -1516,7 +1430,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e14',
         option: {
@@ -1538,7 +1452,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1560,7 +1474,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1582,7 +1496,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1602,7 +1516,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1622,7 +1536,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1642,7 +1556,7 @@ _gcTd.export = {
     {
       input: {
         password: 'gallaaaaaactic',
-        privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
         salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
         iv: 'd32116e6157fde33fa0c7e0e4001e145',
         option: {
@@ -1670,14 +1584,12 @@ _gcTd.recover = {
       input: {
         password: 'gallaaaaaactic',
         keyObject: {
-          address: 'vaZVTNthTQ9nromHQN4KYwjLFTr44ns8FZs',
+          address: 'vaM3QzMAwc1LJau9ps6VS2W7kp2PWKp7Qff',
           crypto: {
             cipher: 'aes-128-ctr',
-            ciphertext: '42bd22c6d3310e5d62ada2c44ef9b7634a85984ef4404be3af881eb9e6ad5847745b14d4d59a61324f3177e5ff9c33c2cd538a8cc084950eed1c2b341867892d',
-            cipherparams: {
-              iv: 'd32116e6157fde33fa0c7e0e4001e145'
-            },
-            mac: '82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe',
+            ciphertext: 'b745bbf018340f227a6855b094462a0d1f133e024ff96c317da1798e98524a61363aebd118ad4f4fde6acb753874343de0ad9506556f19ad5fcca638ea89c76c',
+            cipherparams: { iv: 'd32116e6157fde33fa0c7e0e4001e145' },
+            mac: '27595c4955bc1d5fe7cab1c5446dc37205d7f56d94193083c58333890375a75a',
             kdf: 'pbkdf2',
             kdfparams: {
               c: 262144,
@@ -1689,8 +1601,33 @@ _gcTd.recover = {
         }
       },
       validate: (output) => {
-        expect(output).to.equal('0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE');
-        expect(output.length).to.equal(128);
+        expect(output).to.equal('skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ');
+      }
+    },
+    {
+      input: {
+        password: 'gallaaaaaactic',
+        keyObject: {
+          address: 'acJKTDqKnCoiguTtWRftCRembSEtiJpwzrW',
+          crypto:
+          {
+            cipher: 'aes-128-ctr',
+            ciphertext: 'b745bbf018340f227a6855b094462a0d1f133e024ff96c317da1798e98524a61363aebd118ad4f4fde6acb753874343de0ad9506556f19ad5fcca638ea89c76c',
+            cipherparams: { iv: 'd32116e6157fde33fa0c7e0e4001e145' },
+            mac: '27595c4955bc1d5fe7cab1c5446dc37205d7f56d94193083c58333890375a75a',
+            kdf: 'pbkdf2',
+            kdfparams:
+            {
+              c: 262144,
+              dklen: 32,
+              prf: 'hmac-sha256',
+              salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd'
+            }
+          }
+        }
+      },
+      validate: (output) => {
+        expect(output).to.equal('skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ');
       }
     }
   ],

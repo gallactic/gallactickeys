@@ -83,6 +83,18 @@ _utilTd.deriveKey = {
   ]
 };
 
+_utilTd.marshal = {
+  valid: [
+    {
+      input: {
+        privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
+        type: 1,
+        opt: { kdf: 'pbkdf2' }
+      }
+    }
+  ]
+}
+
 _utilTd.seedHash = {
   valid: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9',
   invalid: [
@@ -129,23 +141,23 @@ _utilTd.keys = {
         //If Public Key is undefined, it should return an error - Public Key is not a valid Public Key String
         input: undefined,
         validate: (output) => {
-          errorMsg = 'Public Key is not a valid Hex String';
+          errorMsg = 'given Public Key string is invalid! unable to proceed';
           expect(output.message).to.equal(errorMsg);
         }
       },
       {
-        //If Public Key is empty, it should return an error - Public Key is not a valid Hex String
+        //If Public Key is empty, it should return an error
         input: '',
         validate: (output) => {
-          errorMsg = 'Public Key is not a valid Hex String';
+          errorMsg = 'given Public Key string is invalid! unable to proceed';
           expect(output.message).to.equal(errorMsg);
         }
       },
       {
-        //If Public Key is not even, it should return an error - Public Key is not a valid Hex String
+        //If Public Key is not even, it should return an error
         input: 'BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1B',
         validate: (output) => {
-          errorMsg = 'Public Key is not a valid Hex String';
+          errorMsg = 'given Public Key string is invalid! unable to proceed';
           expect(output.message).to.equal(errorMsg);
         }
       },
@@ -153,44 +165,57 @@ _utilTd.keys = {
         //If Public Key length is not equal to 64, it should return an error - Public Key is not a valid Public Key String
         input: 'BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1',
         validate: (output) => {
-          errorMsg = 'given Public Key is not a valid Public Key String';
+          errorMsg = 'given Public Key string is invalid! unable to proceed';
           expect(output.message).to.equal(errorMsg);
         }
       }
     ]
   },
   privateKey: {
-    valid: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+    valid: [
+      {
+        input: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+        validate: (output) => {
+          expect(typeof output).to.be.a('string')
+        }
+      },
+      {
+        input: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
+        validate: (output) => {
+          expect(typeof output).to.be.a('string')
+        }
+      }
+    ],
     invalid: [
       {
         //If Private Key length is not equal to 128, it should return an error - Private Key is not a valid Private Key String
         input: undefined,
         validate: (output) => {
-          errorMsg = 'Private Key is not a valid Hex String';
+          errorMsg = 'given Private Key string is invalid! unable to proceed';
           expect(output.message).to.equal(errorMsg);
         }
       },
       {
-        //If Private Key is empty, it should return an error - Private Key is not a valid Hex String
+        //If Private Key is empty, it should return an error
         input: 'Private Key is not a valid Hex String',
         validate: (output) => {
-          errorMsg = 'Private Key is not a valid Hex String';
+          errorMsg = 'given Private Key string is invalid! unable to proceed';
           expect(output.message).to.equal(errorMsg);
         }
       },
       {
-        //If Private Key is not even, it should return an error - Private Key is not a valid Hex String
+        //If Private Key is not even, it should return an error
         input: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1B',
         validate: (output) => {
-          errorMsg = 'Private Key is not a valid Hex String';
+          errorMsg = 'given Private Key string is invalid! unable to proceed';
           expect(output.message).to.equal(errorMsg);
         }
       },
       {
-        //If Private Key length is not equal to 128, it should return an error - Private Key is not a valid Hex String
+        //If Private Key length is not equal to 128, it should return an error
         input: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BEE',
         validate: (output) => {
-          errorMsg = 'Private Key is not a valid Hex String';
+          errorMsg = 'given Private Key string is invalid! unable to proceed';
           expect(output.message).to.equal(errorMsg);
         }
       }
@@ -198,7 +223,37 @@ _utilTd.keys = {
   }
 };
 
-_utilTd.decodeAddress = {
+_utilTd.bs58Encode = {
+  valid: [
+    {
+      input: {
+        address: '6AE5EF855FE4F3771D1B6D6B73E21065ED7670EC',
+        type: 1
+      },
+      validate: function (res) {
+        expect(res).to.equal('acHx3dYGX9pB7xPFZA58ZMcN4kYEooJMVds');
+      }
+    }, {
+      input: {
+        address: '6AE5EF855FE4F3771D1B6D6B73E21065ED7670EC',
+        type: 2
+      },
+      validate: function (res) {
+        expect(res).to.equal('vaLg1Q47gZ1njdpWsbVjnxTiE8Kjbwn1Bvu');
+      }
+    }, {
+      input: {
+        address: '6AE5EF855FE4F3771D1B6D6B73E21065ED7670EC',
+        option: {}
+      },
+      validate: function (res) {
+        expect(res instanceof Error).to.equal(true);
+      }
+    }
+  ]
+}
+
+_utilTd.bs58Decode = {
   valid: [
     {
       input: {
@@ -470,7 +525,7 @@ _utilTd.isAcAddress = {
       },
       validate: (output) => {
         expect(output instanceof Error).to.equal(true);
-        expect(output.message).to.equal('Invalid Checksum');
+        expect(output.message).to.equal('Invalid Checksum! Unable to decode.');
       }
     },
     // modifying "the first 2 characters" of a valid ac address
@@ -480,7 +535,7 @@ _utilTd.isAcAddress = {
       },
       validate: (output) => {
         expect(output instanceof Error).to.equal(true);
-        expect(output.message).to.equal('Invalid Checksum');
+        expect(output.message).to.equal('Invalid Checksum! Unable to decode.');
       }
     }
   ]
@@ -522,7 +577,7 @@ _utilTd.isVaAddress = {
       },
       validate: (output) => {
         expect(output instanceof Error).to.equal(true);
-        expect(output.message).to.equal('Invalid Checksum');
+        expect(output.message).to.equal('Invalid Checksum! Unable to decode.');
       }
     },
     // modifying "the first 2 characters" of a valid va address
@@ -532,7 +587,7 @@ _utilTd.isVaAddress = {
       },
       validate: (output) => {
         expect(output instanceof Error).to.equal(true);
-        expect(output.message).to.equal('Invalid Checksum');
+        expect(output.message).to.equal('Invalid Checksum! Unable to decode.');
       }
     }
   ]

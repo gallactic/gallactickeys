@@ -26,15 +26,6 @@ describe('GallacticKeys - utils - util', () => {
     expect(util.isHexString('008AEEDA4D805471DF9B2A5B0F38A0C3BCBA786B')).to.equal(true);
   });
 
-  it('"isPublicKey" should return true given 774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08', () => {
-    expect(util.isPublicKey('774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08')).to.equal(true);
-  });
-
-  it('"isPrivateKey" should return true given 8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08', () => {
-    expect(util.isPrivateKey('8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08'))
-      .to.equal(true);
-  });
-
   it('"isSeedHash" should return true given 8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D', () => {
     expect(util.isSeedHash('8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D'))
       .to.equal(true);
@@ -142,13 +133,13 @@ describe('GallacticKeys - utils - crypto', function () {
   it('should have "marshal" function', () => expect(crypto.marshal).to.be.a('function'));
   it('should have "encrypt" function', () => expect(crypto.encrypt).to.be.a('function'));
   it('should have "decrypt" function', () => expect(crypto.decrypt).to.be.a('function'));
-  it('should have "getAddressByPubKey" function', () => expect(crypto.getAddressByPubKey).to.be.a('function'));
-  it('should have "getAddressByPrivKey" function', () => expect(crypto.getAddressByPrivKey).to.be.a('function'));
+  it('should have "getTmAddressByPubKey" function', () => expect(crypto.getTmAddressByPubKey).to.be.a('function'));
+  it('should have "getTmAddressByPrivKey" function', () => expect(crypto.getTmAddressByPrivKey).to.be.a('function'));
   it('should have "getAcAddrByPrivKey" function', () => expect(crypto.getAcAddrByPrivKey).to.be.a('function'));
   it('should have "getVaAddrByPrivKey" function', () => expect(crypto.getVaAddrByPrivKey).to.be.a('function'));
-  it('should have "getPubKeyByPrivKey" function', () => expect(crypto.getPubKeyByPrivKey).to.be.a('function'));
-  it('should have "encodeAddress" function', () => expect(crypto.encodeAddress).to.be.a('function'));
-  it('should have "decodeAddress" function', () => expect(crypto.decodeAddress).to.be.a('function'));
+  it('should have "getTmPubKeyByPrivKey" function', () => expect(crypto.getTmPubKeyByPrivKey).to.be.a('function'));
+  it('should have "bs58Encode" function', () => expect(crypto.bs58Encode).to.be.a('function'));
+  it('should have "bs58Decode" function', () => expect(crypto.bs58Decode).to.be.a('function'));
   it('should have "isCipherAvailable" function', () => expect(crypto.isCipherAvailable).to.be.a('function'));
   it('should have "makeKeyPairFromSeed" function', () => expect(crypto.makeKeyPairFromSeed).to.be.a('function'));
   it('should have "createMac" function', () => expect(crypto.createMac).to.be.a('function'));
@@ -156,6 +147,10 @@ describe('GallacticKeys - utils - crypto', function () {
   it('should have "isTmAddress" function', () => expect(crypto.isTmAddress).to.be.a('function'));
   it('should have "isAcAddress" function', () => expect(crypto.isAcAddress).to.be.a('function'));
   it('should have "isVaAddress" function', () => expect(crypto.isVaAddress).to.be.a('function'));
+  it('should have "isTmPublicKey" function', () => expect(crypto.isTmPublicKey).to.be.a('function'));
+  it('should have "isTmPrivateKey" function', () => expect(crypto.isTmPrivateKey).to.be.a('function'));
+  it('should have "isPublicKey" function', () => expect(crypto.isPublicKey).to.be.a('function'));
+  it('should have "isPrivateKey" function', () => expect(crypto.isPrivateKey).to.be.a('function'));
   it('should have "generateSalt" function', () => expect(crypto.generateSalt).to.be.a('function'));
   it('should have "generateIv" function', () => expect(crypto.generateIv).to.be.a('function'));
 
@@ -222,17 +217,21 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done);
   });
 
-  it('"marshal" should return a keystore object given derivedKey, privatekey, salt and iv', function () {
-    let data = {
-      derivedKey: crypto.generateIv(16),
-      privateKey: '8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08',
-      iv: crypto.generateSalt(16),
-      salt: crypto.generateIv(16),
-      type: 1,
-      opt: { kdf: 'pbkdf2' }
-    }
-    expect(crypto.marshal(data.derivedKey, data.privateKey, data.salt, data.iv, data.type, data.opt))
-      .to.be.an('object');
+  it('"marshal" should return a keystore object given derivedKey, privatekey, salt and iv', function (done) {
+    const test = {
+      function: (input) => {
+        return crypto.marshal(
+          crypto.generateIv(16), input.privateKey,
+          crypto.generateSalt(16), crypto.generateIv(16),
+          input.type, input.opt
+        );
+      },
+      validate: (output) => {
+        expect(output).to.be.an('object');
+      }
+    };
+    test.data = utilTd.marshal.valid;
+    globalOrWindow.runTest(test, done);
   });
 
   it('"encrypt" should return encryption buffer given text, key and iv', function () {
@@ -254,19 +253,19 @@ describe('GallacticKeys - utils - crypto', function () {
       .to.equal('object');
   });
 
-  it('"getAddressByPubKey" should return a 40-byte address, given a valid Public Key ', function (done) {
-    var address = crypto.getAddressByPubKey(utilTd.keys.publicKey.valid);
+  it('"getTmAddressByPubKey" should return a 40-byte address, given a valid Public Key ', function (done) {
+    var address = crypto.getTmAddressByPubKey(utilTd.keys.publicKey.valid);
     expect(address).to.exist;
     expect(address.length).to.equal(40);
     expect(util.isHexString(address)).to.be.true;
     done();
   });
 
-  it('"getAddressByPubKey" should throw an error, given an invalid Public Key ', function (done) {
+  it('"getTmAddressByPubKey" should throw an error, given an invalid Public Key ', function (done) {
     let test = {
       function: (input) => {
         try {
-          return crypto.getAddressByPubKey(input);
+          return crypto.getTmAddressByPubKey(input);
         } catch (e) {
           return e;
         }
@@ -280,19 +279,29 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done);
   });
 
-  it('"getAddressByPrivKey" should return a 40-byte address, given a valid Private Key (64-bytes Hex String)', function (done) {
-    var address = crypto.getAddressByPrivKey(utilTd.keys.privateKey.valid);
-    expect(address).to.exist;
-    expect(address.length).to.equal(40);
-    expect(util.isHexString(address)).to.be.true;
-    done();
-  });
-
-  it('"getAddressByPrivKey" should throw an error, given an invalid Prvate Key', function (done) {
+  it('"getTmAddressByPrivKey" should return a 40-byte address, given a valid Private Key (64-bytes Hex String)', function (done) {
     let test = {
       function: (input) => {
         try {
-          return crypto.getAddressByPrivKey(input);
+          return crypto.getTmAddressByPrivKey(input);
+        } catch (e) {
+          return e;
+        }
+      },
+      validate: (output) => {
+        expect(output instanceof Error).to.equal(false);
+      }
+    };
+
+    test.data = utilTd.keys.privateKey.valid;
+    globalOrWindow.runTest(test, done);
+  });
+
+  it('"getTmAddressByPrivKey" should throw an error, given an invalid Prvate Key', function (done) {
+    let test = {
+      function: (input) => {
+        try {
+          return crypto.getTmAddressByPrivKey(input);
         } catch (e) {
           return e;
         }
@@ -306,11 +315,11 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done);
   });
 
-  it('"encodeAddress" should return the encoded address based on given address and option', function (done) {
+  it('"bs58Encode" should return the encoded address based on given address and option', function (done) {
     const test = {
       function: function (data) {
         try {
-          let res = crypto.encodeAddress(data.address, data.type);
+          let res = crypto.bs58Encode(data.address, data.type);
           return res;
         } catch (e) {
           return e;
@@ -320,43 +329,19 @@ describe('GallacticKeys - utils - crypto', function () {
         if (!res instanceof Error) expect(res).to.be.a('string');
       }
     }
-    test.data = [{
-      input: {
-        address: '6AE5EF855FE4F3771D1B6D6B73E21065ED7670EC',
-        type: 1
-      },
-      validate: function (res) {
-        expect(res).to.equal('acHx3dYGX9pB7xPFZA58ZMcN4kYEooJMVds');
-      }
-    }, {
-      input: {
-        address: '6AE5EF855FE4F3771D1B6D6B73E21065ED7670EC',
-        type: 2
-      },
-      validate: function (res) {
-        expect(res).to.equal('vaLg1Q47gZ1njdpWsbVjnxTiE8Kjbwn1Bvu');
-      }
-    }, {
-      input: {
-        address: '6AE5EF855FE4F3771D1B6D6B73E21065ED7670EC',
-        option: {}
-      },
-      validate: function (res) {
-        expect(res instanceof Error).to.equal(true);
-      }
-    }];
+    test.data = utilTd.bs58Encode.valid;
     globalOrWindow.runTest(test, done);
   });
 
-  it('"decodeAddress" should return the decoded address given encoded address', function (done) {
+  it('"bs58Decode" should return the decoded address given encoded address', function (done) {
     const test = {
       function: (input) => {
-        return crypto.decodeAddress(input.address);
+        return crypto.bs58Decode(input.address);
       },
       validate: (output) => { }
     };
 
-    test.data = utilTd.decodeAddress.valid;
+    test.data = utilTd.bs58Decode.valid;
     globalOrWindow.runTest(test, done);
   })
 
@@ -537,6 +522,15 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done);
   });
 
+  it('"isTmPublicKey" should return true given 774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08', () => {
+    expect(crypto.isTmPublicKey('774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08')).to.equal(true);
+  });
+
+  it('"isTmPrivateKey" should return true given 8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08', () => {
+    expect(crypto.isTmPrivateKey('8EAB2233E0DCE2F1337BD491B2EB04CA6C8334B60C1FB0D1A9B6C80CABF1765D774D6DC700FB0BDE7924BA1CA27EDAEC9F51939824BC20300FAA468285AEDE08'))
+      .to.equal(true);
+  });
+
   it('"generateSalt" should return a buffer object, provided a valid numeric size >=0', function (done) {
     const test = {
       function: (input) => {
@@ -599,3 +593,7 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done)
   });
 });
+
+/**
+ *
+ */

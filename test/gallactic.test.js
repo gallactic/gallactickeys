@@ -6,8 +6,8 @@ var globalOrWindow = (typeof window !== 'undefined' ? window : global);
 var igcTd = (typeof window !== 'undefined' ? window : require('./gallactic.td'))._gcTd;
 
 const length = {
-  publicKey: 64,
-  privateKey: 128,
+  publicKey: 51,
+  privateKey: 95,
   seedHashed: 64,
   salt: 64,
   iv: 32,
@@ -39,7 +39,7 @@ globalOrWindow.runTest = function (test, done, count = 0) {
   if (res && typeof res.then === 'function') {
     res
       .then(output => {
-        test.validate(output);
+        if (test.validate) test.validate(res);
         if (test.data[count].validate) {
           test.data[count].validate(output);
         }
