@@ -25,23 +25,29 @@ const length = {
  * @param {Integer} count [a counter value of running test]
  */
 globalOrWindow.runTest = function (test, done, count = 0) {
+  if (!test.function || !test.data) {
+    throw new Error('"runTest" require test function and data in order to run the test');
+  }
+
   if (test.data.length === count) {
     return done();
   }
+
   if (typeof process !== 'undefined') {
     process.stdout.write(`Testing case number: ${count}\r`);
   }
 
-  let beforeTest = test.before ? test.before() : null;
+  let beforeTest = test.before ? test.before(test.data[count].input) : null;
   let res = beforeTest && typeof beforeTest.then === 'function' ?
     beforeTest.then(() => test.function(test.data[count].input)) :
     test.function(test.data[count].input);
+
   if (res && typeof res.then === 'function') {
     res
       .then(output => {
-        test.validate(output);
+        test.validate(output, test.data[count].input, count);
         if (test.data[count].validate) {
-          test.data[count].validate(output);
+          test.data[count].validate(output, test.data[count].input, count);
         }
         globalOrWindow.runTest(test, done, ++count);
       })
@@ -51,9 +57,9 @@ globalOrWindow.runTest = function (test, done, count = 0) {
       });
   } else {
     try {
-      if (test.validate) test.validate(res);
+      if (test.validate) test.validate(res, test.data[count].input, count);
       if (test.data[count].validate) {
-        test.data[count].validate(res);
+        test.data[count].validate(res, test.data[count].input, count);
       }
       globalOrWindow.runTest(test, done, ++count);
     } catch (e) {
