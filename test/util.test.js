@@ -484,7 +484,7 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done);
   });
 
-  it('"isAcAddress" should throw an error based on given invalid ac address', function(done) {
+  it('"isAcAddress" should return boolean value or throw an error based on given invalid ac address', function(done) {
     const test = {
       function: (input) => {
         try { return crypto.isAcAddress(input.address); }
@@ -500,9 +500,6 @@ describe('GallacticKeys - utils - crypto', function () {
     const test = {
       function: (input) => {
         return crypto.isVaAddress(input.address);
-      },
-      validate: (output) => {
-        expect(output).to.equal(true);
       }
     };
 
