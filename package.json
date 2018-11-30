@@ -1,6 +1,6 @@
 {
   "name": "gallactickeys",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A module for creating and importing Galactic keys",
   "main": "index.js",
   "scripts": {
