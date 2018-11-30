@@ -386,8 +386,7 @@ _utilTd.isAddress = {
         address: 'somethingelsethathasthirtytofourtycharcs'
       },
       validate: (output) => {
-        expect(output instanceof Error).to.equal(true);
-        expect(output.message).to.equal('Address is not a valid Hex String');
+        expect(output).to.equal(false);
       }
     },
     // random stirng 35 characters
@@ -396,8 +395,7 @@ _utilTd.isAddress = {
         address: 'somethingelsethathasthirtytofourtyc'
       },
       validate: (output) => {
-        expect(output instanceof Error).to.equal(true);
-        expect(output.message).to.equal('Address is not a valid Hex String');
+        expect(output).to.equal(false);
       }
     },
     // modifying "the last character" of a valid ac address
@@ -511,11 +509,10 @@ _utilTd.isAcAddress = {
     // random stirng 35 characters
     {
       input: {
-        address: 'somethingelsethathasthirtytofourtyc'
+        address: 'somethingelsethathasthirtyfourtycca'
       },
       validate: (output) => {
-        expect(output instanceof Error).to.equal(true);
-        expect(output.message).to.equal('Non-base58 character');
+        expect(output).to.equal(false);
       }
     },
     // modifying "the last character" of a valid ac address
@@ -534,13 +531,29 @@ _utilTd.isAcAddress = {
         address: 'vaHx3dYGX9pB7xPFZA58ZMcN4kYEooJMVds'
       },
       validate: (output) => {
+        expect(output).to.equal(false);
+      }
+    },
+    // given any va address should return false
+    {
+      input: {
+        address: 'vaBdTQnKWstzbP9rrMCvPP4rxqLU3PDvKHM'
+      },
+      validate: (output) => {
+        expect(output).to.equal(false);
+      }
+    },
+    {
+      input: {
+        address: 'acsomethingwiththirtyfivecharacters'
+      },
+      validate: (output) => {
         expect(output instanceof Error).to.equal(true);
         expect(output.message).to.equal('Invalid Checksum! Unable to decode.');
       }
     }
   ]
 };
-
 
 _utilTd.isVaAddress = {
   valid: [
@@ -563,17 +576,16 @@ _utilTd.isVaAddress = {
     // random stirng 35 characters
     {
       input: {
-        address: 'somethingelsethathasthirtytofourtyc'
+        address: 'somethingelsethathasthirtyfourtyc'
       },
       validate: (output) => {
-        expect(output instanceof Error).to.equal(true);
-        expect(output.message).to.equal('Non-base58 character');
+        expect(output).to.equal(false);
       }
     },
     // modifying "the last character" of a valid va address
     {
       input: {
-        address: 'vaTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Qz'
+        address: 'vaTCD3Uigtb4EnMrV453z5H8g5LBxtWn6QQ'
       },
       validate: (output) => {
         expect(output instanceof Error).to.equal(true);
@@ -584,6 +596,14 @@ _utilTd.isVaAddress = {
     {
       input: {
         address: 'acTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Q8'
+      },
+      validate: (output) => {
+        expect(output).to.equal(false);
+      }
+    },
+    {
+      input: {
+        address: 'vasomethingwiththirtyfivecharacters'
       },
       validate: (output) => {
         expect(output instanceof Error).to.equal(true);
