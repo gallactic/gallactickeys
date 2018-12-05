@@ -4,6 +4,7 @@
   "description": "A module for creating and importing Galactic keys",
   "main": "index.js",
   "scripts": {
+    "browser": "webpack",
     "test": "webpack && mocha test"
   },
   "author": "Josef Wijaya <josefwijaya@outlook.com>, Ahmad Pouladzadeh <pouladzade@gmail.com>",
