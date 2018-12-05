@@ -24,20 +24,20 @@ Generate a random private key, as well as the salt used by the key derivation fu
 ```js
 var gallactickeys = require('./index');
 var options = {
-  seed: 'shadow outside hint dish fortune boss oak album gym all mask there' // optional
+  seed: 'salad buffalo ribbon pretty chunk trade genius bid sense tent artist lottery' // optional
 };
 
 var dk = gallactickeys.create(option);
 /**
 dk = {
-  seed: 'shadow outside hint dish fortune boss oak album gym all mask there',
-  seedHashed: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9',
-  salt: 'F87D36EFA63A3157D32BDAE855F0D6C97D80102B8567209BCFE6F5C45BB85E8B',
-  iv: 'D71125645283D034855A2F44605E510C',
+  seed: 'salad buffalo ribbon pretty chunk trade genius bid sense tent artist lottery',
+  seedHashed: 'B51CB12FC3CBE2134E890817C58570028D02CF93E9A4DC9646C25C09C77CF6A5',
   keyPair: {
-    publicKey: 'BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
-    privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE'
-  }
+    publicKey: 'pjASdjRJVwmrDpevpcj4WPRC6RnHGpG5ZGeCWVvkDMRUCvScdcZ',
+    privateKey: 'skfsX2XY9wmAxpqshKdYgwHsS9vcLVDzNPQLdHjY5XC9BvSiNwjpoTJLmjL75149KECbYLLiCW94PiMe2yJbs4PkP4qihYW'
+  },
+  salt: 'B2F7F3C021AFB205A5349F803BB2FC346231E1CE0E4A9FCFCC0B86C3C18C48A2',
+  iv: '55FBC4CB9FA46233487B424043A50FDE'
 }
 */
 ```
@@ -50,7 +50,7 @@ You will need to specify a password and (optionally) a key derivation function. 
 
 let opt = {
   password: 'gallaaaaaactic',
-  privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+  privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
   salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
   iv: 'd32116e6157fde33fa0c7e0e4001e145',
   option: {
@@ -68,13 +68,14 @@ let keystore = gallactickeys.exportAc(opt.password, opt.privateKey, opt.salt, op
 
 /**
 keystore = {
-  address: 'acQUFGxsXVPSd6vbAceSkURnWhYhApE9VRe',
+  address: 'acQDEb2tMmjWb9mj5S1Rw3YbRjKSpwD9x6F',
   crypto: {
     cipher: 'aes-128-ctr',
+    ciphertext: 'b745bbf018340f227a6855b094462a0d1f133e024ff96c317da1798e98524a61363aebd118ad4f4fde6acb753874343de0ad9506556f19ad5fcca638ea89c76c',
     cipherparams: {
       iv: 'd32116e6157fde33fa0c7e0e4001e145'
     },
-    mac: '82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe',
+    mac: '27595c4955bc1d5fe7cab1c5446dc37205d7f56d94193083c58333890375a75a',
     kdf: 'pbkdf2',
     kdfparams: {
       c: 262144,
@@ -89,16 +90,18 @@ keystore = {
 // exportVa - function
 let opt = {
   password: 'gallaaaaaactic',
-  privateKey: '0A0766C934FAFE80E73A088B25406291AA6959B34446D82D2DD698C88100EDD9BD9E00FA32C8D1826EA4436F3817F800D201E0756A14735C4D2F72F30D11B1BE',
+  privateKey: 'skqfmiwcQorVqaiycr4m3fpiE6HxhQtBkhb17imvwy7Y9TgyUYKByZee1vzcdofXdRd93E3Zw7frGy7bcqE38HycfhjBHuJ',
   salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd',
   iv: 'd32116e6157fde33fa0c7e0e4001e145',
   option: {
-    kdf: 'pbkdf2',
+    kdf: 'scrypt',
     cipher: 'aes-128-ctr',
     kdfparams: {
-      c: 262144,
-      dklen: 32,
-      prf: 'hmac-sha256'
+      n: 16384,
+      r: 8,
+      p: 1,
+      dklen: 64,
+      salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd'
     }
   }
 }
@@ -107,18 +110,20 @@ let keystore = gallactickeys.exportVa(opt.password, opt.privateKey, opt.salt, op
 
 /**
 keystore = {
-  address: 'vaTCD3Uigtb4EnMrV453z5H8g5LBxtWn6Q8',
+  address: 'vaSwCMYjXAw8CqCzPsS3AePwb76wd3mAdxd',
   crypto: {
     cipher: 'aes-128-ctr',
+    ciphertext: '7d58d4a6e5d21a3b2f85be7ed2337ff28607683bf411c8211389988542098b58dd45eb233b6a042351621e57d4c1c78c3dd164ef6c6d223d827fcbd2a483abfd',
     cipherparams: {
       iv: 'd32116e6157fde33fa0c7e0e4001e145'
     },
-    mac: '82d5f18afaa6e7d0b555e87fd6096c594a0f1069875522db85ff523ebd38dabe',
-    kdf: 'pbkdf2',
+    mac: '790e5c958dc1a78a5d2e757c8215558e2bb036068f213e2304de4eb3749b074f',
+    kdf: 'scrypt',
     kdfparams: {
-      c: 262144,
-      dklen: 32,
-      prf: 'hmac-sha256',
+      n: 16384,
+      r: 8,
+      p: 1,
+      dklen: 64,
       salt: 'ae3cd4e7013836a3df6bd7241b12db061dbe2c6785853cce422d148a624ce0bd'
     }
   }
@@ -132,7 +137,13 @@ Unit tests are in the ```test``` directory and can be run with mocha:
 npm test
 ```
 
-The command will help run webpack generate new minified file under dist folder. inside the test folder, there's ```test.html``` that will trigger to run ```mocha``` if opened using a browser for browser testing. Otherwise, you can run ```mocha``` to start the test
+The command below will help run webpack generate new minified file under dist folder.
+
+```
+npm run browser
+```
+
+Also, inside the test folder, there's ```test.html``` that will trigger to run ```mocha``` if opened using a browser for browser testing. Otherwise, you can run ```mocha``` to start the test
 ```
 mocha
 ```
