@@ -315,6 +315,24 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done);
   });
 
+  it('"getPubKeyByPrivKey" function', function (done) {
+    let test = {
+      function: (input) => {
+        try {
+          return crypto.getPubKeyByPrivKey(input);
+        } catch (e) {
+          return e;
+        }
+      },
+      validate: (output) => {
+        expect(output).to.be.a('string');
+      }
+    };
+
+    test.data = utilTd.keys.privateKey.valid;
+    globalOrWindow.runTest(test, done);
+  });
+
   it('"bs58Encode" should return the encoded address based on given address and option', function (done) {
     const test = {
       function: function (data) {
