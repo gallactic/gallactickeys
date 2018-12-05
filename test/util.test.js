@@ -315,6 +315,60 @@ describe('GallacticKeys - utils - crypto', function () {
     globalOrWindow.runTest(test, done);
   });
 
+  it('"getAcAddrByPrivKey" should return Account Address given valid Private Key', function (done){
+    let test = {
+      function: (input) => {
+        try {
+          return crypto.getAcAddrByPrivKey(input);
+        } catch (e) {
+          return e;
+        }
+      },
+      validate: (output) => {
+        expect(output).to.be.a('string');
+      }
+    };
+
+    test.data = utilTd.keys.privateKey.valid;
+    globalOrWindow.runTest(test, done);
+  });
+
+  it('"getVaAddrByPrivKey" should return Validator Address given valid Private Key', function (done) {
+    let test = {
+      function: (input) => {
+        try {
+          return crypto.getVaAddrByPrivKey(input);
+        } catch (e) {
+          return e;
+        }
+      },
+      validate: (output) => {
+        expect(output).to.be.a('string');
+      }
+    };
+
+    test.data = utilTd.keys.privateKey.valid;
+    globalOrWindow.runTest(test, done);
+  });
+
+  it('"getTmPubKeyByPrivKey" function', function (done) {
+    let test = {
+      function: (input) => {
+        try {
+          return crypto.getTmPubKeyByPrivKey(input);
+        } catch (e) {
+          return e;
+        }
+      },
+      validate: (output) => {
+        expect(output).to.be.a('string');
+      }
+    };
+
+    test.data = utilTd.keys.privateKey.valid;
+    globalOrWindow.runTest(test, done);
+  });
+
   it('"getPubKeyByPrivKey" function', function (done) {
     let test = {
       function: (input) => {
@@ -405,7 +459,6 @@ describe('GallacticKeys - utils - crypto', function () {
     }
     test.data = utilTd.makeKeyPairFromSeed.valid;
     globalOrWindow.runTest(test, done)
-
   });
 
   it('"makeKeyPairFromSeed" should throw and error, provided an invalid buffer', function (done) {
@@ -424,7 +477,6 @@ describe('GallacticKeys - utils - crypto', function () {
     }
     test.data = utilTd.makeKeyPairFromSeed.invalid;
     globalOrWindow.runTest(test, done)
-
   });
 
   it('"createMac" should return Hex string of mac given derivedKey and cipherText', function () {
