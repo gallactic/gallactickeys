@@ -270,11 +270,11 @@ describe('GallacticKeys', function () {
     globalOrWindow.runTest(test, done);
   });
 
-  it('inspectAccount - should return the account object with privatekey, public key and address', function (done) {
+  it('getAccountByPrivkey - should return the account object with privatekey, public key and address', function (done) {
 
     const test = {
       function: (input) => {
-        let result = gallactickeys.inspectAccount(input.privateKey);
+        let result = gallactickeys.getAccountByPrivkey(input.privateKey);
         return result;
       },
       validate: (output) => {
@@ -286,12 +286,12 @@ describe('GallacticKeys', function () {
     globalOrWindow.runTest(test, done);
   });
 
-  it('inspectAccount - should throw an error, provided incorrect privatekey as input', function (done) {
+  it('getAccountByPrivkey - should throw an error, provided incorrect privatekey as input', function (done) {
 
     let test = {
       function: (input) => {
         try {
-          let result = gallactickeys.inspectAccount(input.privateKey);
+          let result = gallactickeys.getAccountByPrivkey(input.privateKey);
           return result;
         }
         catch (e) {
